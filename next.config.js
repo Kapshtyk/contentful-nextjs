@@ -26,5 +26,5 @@ module.exports = {
 };
 
 const cspHeader = `
-    frame-ancestors 'self 'https://app.contentful.com';
+    frame-ancestors 'self' https://app.contentful.com;
 `;
