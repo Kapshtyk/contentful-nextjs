@@ -1,51 +1,21 @@
-import Image from "next/image";
-import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
-import { BLOCKS } from "@contentful/rich-text-types";
+import Image from 'next/image'
+import { ReactNode } from 'react'
+import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
+import { BLOCKS, Document } from '@contentful/rich-text-types'
 
-interface Asset {
-  sys: {
-    id: string;
-  };
-  url: string;
-  description: string;
+import { EmbeddedAsset, renderEmbeddedAsset } from './EmbeddedAsset'
+
+type RichTextProps = {
+  document: Document
 }
 
-interface AssetLink {
-  block: Asset[];
-}
-
-interface Content {
-  json: any;
-  links: {
-    assets: AssetLink;
-  };
-}
-
-function RichTextAsset({
-  id,
-  assets,
-}: {
-  id: string;
-  assets: Asset[] | undefined;
-}) {
-  const asset = assets?.find((asset) => asset.sys.id === id);
-
-  if (asset?.url) {
-    return <Image src={asset.url} layout="fill" alt={asset.description} />;
-  }
-
-  return null;
-}
-
-export function Markdown({ content }: { content: Content }) {
-  return documentToReactComponents(content.json, {
+export function Markdown({ document }: RichTextProps): ReactNode {
+  return documentToReactComponents(document, {
     renderNode: {
-      [BLOCKS.EMBEDDED_ASSET]: (node: any) => (
-        <RichTextAsset
-          id={node.data.target.sys.id}
-          assets={content.links.assets.block}
-        />
-      ),
-    },
-  });
+      [BLOCKS.EMBEDDED_ASSET]: renderEmbeddedAsset,
+      [BLOCKS.HEADING_1]: (node, children) => {
+        return <h1>{children}</h1>
+      }
+    }
+  })
 }
