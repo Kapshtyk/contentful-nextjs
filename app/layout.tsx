@@ -1,19 +1,20 @@
-import './globals.css'
+import "./globals.css";
 
-import { Inter } from 'next/font/google'
+import { Inter } from "next/font/google";
+import { draftMode } from "next/headers";
 
-import { CMS_NAME, EXAMPLE_PATH } from '@/lib/constants'
+import { CMS_NAME, EXAMPLE_PATH } from "@/lib/constants";
 
 export const metadata = {
   title: `Next.js and ${CMS_NAME} Example`,
-  description: `This is a blog built with Next.js and ${CMS_NAME}.`
-}
+  description: `This is a blog built with Next.js and ${CMS_NAME}.`,
+};
 
 const inter = Inter({
-  variable: '--font-inter',
-  subsets: ['latin'],
-  display: 'swap'
-})
+  variable: "--font-inter",
+  subsets: ["latin"],
+  display: "swap",
+});
 
 function Footer() {
   return (
@@ -40,22 +41,28 @@ function Footer() {
         </div>
       </div>
     </footer>
-  )
+  );
 }
 
 export default function RootLayout({
-  children
+  children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
+  const { isEnabled } = draftMode();
   return (
     <html lang="en" className={inter.variable}>
       <body>
+        {isEnabled && (
+          <div className="w-full text-center text-white bg-red-300">
+            Draft mode enabled
+          </div>
+        )}
         <section className="min-h-screen">
           <main>{children}</main>
           <Footer />
         </section>
       </body>
     </html>
-  )
+  );
 }

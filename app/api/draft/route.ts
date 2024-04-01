@@ -1,23 +1,35 @@
-import { draftMode } from 'next/headers'
-import { redirect } from 'next/navigation'
+// route handler with secret and slug
+import { draftMode } from "next/headers";
+import { redirect } from "next/navigation";
 
-import { getPreviewPostBySlug } from '../../../lib/api'
+import { getPostBySlug } from "@/lib/api/posts";
 
 export async function GET(request: Request) {
-  const { searchParams } = new URL(request.url)
-  const secret = searchParams.get('secret')
-  const slug = searchParams.get('slug')
+  // Parse query string parameters
+  const { searchParams } = new URL(request.url);
+  const secret = searchParams.get("secret");
+  const slug = searchParams.get("slug");
 
-  if (secret !== process.env.CONTENTFUL_PREVIEW_SECRET) {
-    return new Response('Invalid token', { status: 401 })
+  // Check the secret and next parameters
+  // This secret should only be known to this route handler and the CMS
+  if (secret !== process.env.CONTENTFUL_PREVIEW_SECRET || !slug) {
+    return new Response("Invalid token", { status: 401 });
   }
 
-  const post = await getPreviewPostBySlug(slug)
+  // Fetch the headless CMS to check if the provided `slug` exists
+  // getPostBySlug would implement the required fetching logic to the headless CMS
+  const post = await getPostBySlug(slug, true);
+  console.log(post);
 
+  // If the slug doesn't exist prevent draft mode from being enabled
   if (!post) {
-    return new Response('Invalid slug', { status: 401 })
-  }
+    return new Response("Invalid slug", { status: 401 });
+  } else {
+    // Enable Draft Mode by setting the cookie
+    draftMode().enable();
 
-  draftMode().enable()
-  redirect(`/posts/${post.slug}`)
+    // Redirect to the path from the fetched post
+    // We don't redirect to searchParams.slug as that might lead to open redirect vulnerabilities
+    redirect("http://localhost:3000/posts/" + post.slug);
+  }
 }
