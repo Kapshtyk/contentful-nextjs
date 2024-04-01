@@ -22,6 +22,7 @@ const documents = {
     "\n  query GetPostsSlugs {\n    postCollection {\n      items {\n        slug\n      }\n    }\n  }\n": types.GetPostsSlugsDocument,
     "\n  query GetPostPreview($slug: String!) {\n    postCollection(where: { slug: $slug }, preview: true, limit: 1) {\n      items {\n        ...FragmentPost\n      }\n    }\n  }\n": types.GetPostPreviewDocument,
     "\n  query GetFrontpage($limit: Int!) {\n    frontpageCollection(limit: $limit) {\n      items {\n        ...FragmentFrontpage\n      }\n    }\n  }\n": types.GetFrontpageDocument,
+    "\n  query getMenu {\n    menuCollection(limit: 1) {\n      items {\n        menuLinksCollection {\n          items {\n            slug\n            title\n          }\n        }\n      }\n    }\n  }\n": types.GetMenuDocument,
 };
 
 /**
@@ -74,6 +75,10 @@ export function graphql(source: "\n  query GetPostPreview($slug: String!) {\n   
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
 export function graphql(source: "\n  query GetFrontpage($limit: Int!) {\n    frontpageCollection(limit: $limit) {\n      items {\n        ...FragmentFrontpage\n      }\n    }\n  }\n"): (typeof documents)["\n  query GetFrontpage($limit: Int!) {\n    frontpageCollection(limit: $limit) {\n      items {\n        ...FragmentFrontpage\n      }\n    }\n  }\n"];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(source: "\n  query getMenu {\n    menuCollection(limit: 1) {\n      items {\n        menuLinksCollection {\n          items {\n            slug\n            title\n          }\n        }\n      }\n    }\n  }\n"): (typeof documents)["\n  query getMenu {\n    menuCollection(limit: 1) {\n      items {\n        menuLinksCollection {\n          items {\n            slug\n            title\n          }\n        }\n      }\n    }\n  }\n"];
 
 export function graphql(source: string) {
   return (documents as any)[source] ?? {};

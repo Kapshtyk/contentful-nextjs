@@ -41,8 +41,13 @@ export async function getPostBySlug(
     : null;
 }
 
-export async function getSlugs(): Promise<string[]> {
+export async function getSlugs(): Promise<{ slug: string }[]> {
   const entries = await fetchGraphQL<GetPostsSlugsQuery>(GET_POSTS_SLUGS);
+  const slugs = entries.postCollection?.items
+    .filter((item): item is Post => item !== null && !!item.slug)
+    .map((item: Post) => {
+      return { slug: item.slug };
+    }) as { slug: string }[];
 
-  return entries.postCollection?.items.map((item) => item?.slug ?? "") ?? [];
+  return slugs;
 }

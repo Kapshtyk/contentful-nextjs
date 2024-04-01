@@ -2,7 +2,9 @@ import "./globals.css";
 
 import { Inter } from "next/font/google";
 import { draftMode } from "next/headers";
+import Link from "next/link";
 
+import { getMenu } from "@/lib/api/menu";
 import { CMS_NAME, EXAMPLE_PATH } from "@/lib/constants";
 
 export const metadata = {
@@ -44,12 +46,13 @@ function Footer() {
   );
 }
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   const { isEnabled } = draftMode();
+  const menus = await getMenu();
   return (
     <html lang="en" className={inter.variable}>
       <body>
@@ -58,6 +61,20 @@ export default function RootLayout({
             Draft mode enabled
           </div>
         )}
+        <header>
+          <nav className="w-full bg-red-50 p-4">
+            <ul className="w-full flex gap-4 justify-evenly bg-red-50">
+              {menus?.menuLinksCollection?.items.map(
+                (menu) =>
+                  menu?.slug && (
+                    <li key={menu.slug}>
+                      <Link href={menu.slug}>{menu?.title}</Link>
+                    </li>
+                  ),
+              )}
+            </ul>
+          </nav>
+        </header>
         <section className="min-h-screen">
           <main>{children}</main>
           <Footer />
