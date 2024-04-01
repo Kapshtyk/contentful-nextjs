@@ -1,4 +1,4 @@
-import type { CodegenConfig } from '@graphql-codegen/cli'
+import type { CodegenConfig } from "@graphql-codegen/cli";
 
 const config: CodegenConfig = {
   overwrite: true,
@@ -7,21 +7,21 @@ const config: CodegenConfig = {
       [`https://graphql.contentful.com/content/v1/spaces/${process.env.CONTENTFUL_SPACE_ID}/`]:
         {
           headers: {
-            Authorization: `Bearer ${process.env.CONTENTFUL_ACCESS_TOKEN}`
-          }
-        }
-    }
+            Authorization: `Bearer ${process.env.CONTENTFUL_ACCESS_TOKEN}`,
+          },
+        },
+    },
   ],
-  documents: ['graphql/{queries,fragments}/*{gql,ts,tsx}'],
+  documents: ["lib/graphql/**/*.ts"],
   generates: {
-    './graphql/generate/': {
-      preset: 'client',
+    "lib/graphql/generate/": {
+      preset: "client",
       presetConfig: {
-        fragmentMasking: false
-      }
-    }
+        fragmentMasking: false,
+      },
+    },
   },
-  verbose: true
-}
+  verbose: true,
+};
 
-export default config
+export default config;

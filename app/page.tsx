@@ -1,23 +1,23 @@
-import ContentfulImage from '@/lib/contentful-image'
-import { getPostBySlug } from '@/lib/graphql/posts'
-import Image from 'next/image'
-
+import { getFrontPage } from "@/lib/api/frontpage";
 
 export default async function Page() {
-  const frontpage = await getPostBySlug('post')
+  const frontpage = await getFrontPage();
 
-  if (!frontpage) {
-    return <div>Post not found</div>
+  if (!frontpage[0]) {
+    return <div>Post not found</div>;
   }
 
   return (
     <div className="container mx-auto px-5">
-      {frontpage.title}
-      {frontpage.author?.name}
+      {frontpage[0].title}
+      {frontpage[0].description?.json && (
+        <div>
+          <pre>{JSON.stringify(frontpage[0].description.json, null, 2)}</pre>
+        </div>
+      )}
       {/* {frontpage?.coverImage?.url && (
         <ContentfulImage src={frontpage.coverImage.url} />
       )} */}
-      <pre>{JSON.stringify(frontpage, null, 2)}</pre>
     </div>
-  )
+  );
 }

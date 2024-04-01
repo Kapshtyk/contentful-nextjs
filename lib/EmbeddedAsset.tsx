@@ -1,20 +1,20 @@
-import { NodeRenderer } from '@contentful/rich-text-react-renderer'
-import type { Asset } from 'contentful'
+import { NodeRenderer } from "@contentful/rich-text-react-renderer";
+import type { Asset } from "contentful";
 
 export const renderEmbeddedAsset: NodeRenderer = (node) => {
-  const asset = node.data.tagret
-  console.log(asset)
+  const asset = node.data.tagret;
+  console.log(asset);
   if (asset) {
-    return <EmbeddedAsset asset={asset} />
+    return <EmbeddedAsset asset={asset} />;
   }
-  return null
-}
+  return null;
+};
 
 export const EmbeddedAsset = ({
-  asset
+  asset,
 }: {
-  asset: Asset<'WITHOUT_UNRESOLVABLE_LINKS'>
+  asset: Asset<"WITHOUT_UNRESOLVABLE_LINKS">;
 }) => {
-  console.log(asset)
-  return null
-}
+  console.log(asset);
+  return null;
+};
