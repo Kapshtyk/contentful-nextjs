@@ -3,7 +3,6 @@ import type { Asset } from "contentful";
 
 export const renderEmbeddedAsset: NodeRenderer = (node) => {
   const asset = node.data.tagret;
-  console.log(asset);
   if (asset) {
     return <EmbeddedAsset asset={asset} />;
   }

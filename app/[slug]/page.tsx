@@ -7,19 +7,15 @@ export async function generateStaticParams() {
   return await getSlugs();
 }
 
-export default async function PostPage({
-  params,
-}: {
-  params: { slug: string };
-}) {
+export default async function Page({ params }: { params: { slug: string } }) {
   const { isEnabled } = draftMode();
   const post = await getPostBySlug(params.slug, isEnabled);
   return (
-    <div className="container mx-auto px-5">
-      <h1 className="font-semibold text-6xl leading-tight">{post?.title}</h1>
-      <p className="font-light text-lg leading-loose">{post?.excerpt}</p>
+    <div className="container">
+      <h1 className="text-6xl font-semibold leading-tight">{post?.title}</h1>
+      <p className="text-lg font-light leading-loose">{post?.excerpt}</p>
       {post?.coverImage?.url && (
-        <div className="relative w-96 h-56">
+        <div className="relative h-56 w-96">
           <ContentfulImage
             src={post.coverImage.url}
             fill={true}

@@ -39,7 +39,7 @@ export async function fetchGraphQL<T, V = Exact<{ [key: string]: never }>>(
   return request(
     `https://graphql.contentful.com/content/v1/spaces/${process.env.CONTENTFUL_SPACE_ID}`,
     query,
-    { ...variables },
+    { ...variables, include: 10 },
     {
       "Content-Type": "application/json",
       Authorization: `Bearer ${

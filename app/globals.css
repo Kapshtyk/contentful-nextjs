@@ -1,3 +1,100 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+@layer base {
+  :root {
+    --background: 255 255 255;
+    --foreground: 51 51 51;
+    --brand: 3 98 128;
+    --brand-light: 51 119 136;
+    --brand-dark: 1 46 74;
+    --accent: 129 190 206;
+  }
+  html {
+    line-height: 1.8;
+    color: #333;
+    font-weight: theme(fontWeight.light);
+    overflow-x: hidden;
+
+    @screen sm {
+      font-size: 112.5%;
+    }
+  }
+}
+
+@layer components {
+  .container {
+    max-width: theme(screens.xl);
+    margin-inline: auto;
+    padding-inline: theme(spacing.4);
+  }
+
+  .heading-1 {
+    font-size: theme(fontSize.5xl);
+    color: theme(colors.brand);
+    margin-bottom: 0.5em;
+    font-weight: theme(fontWeight.black);
+
+    @screen lg {
+      font-size: theme(fontSize.6xl);
+    }
+    @screen 2xl {
+      font-size: theme(fontSize.7xl);
+    }
+  }
+  .heading-2 {
+    font-size: theme(fontSize.4xl);
+    color: theme(colors.brand);
+    margin-bottom: 0.5em;
+    font-weight: theme(fontWeight.extrabold);
+
+    @screen lg {
+      font-size: theme(fontSize.5xl);
+    }
+    @screen 2xl {
+      font-size: theme(fontSize.6xl);
+    }
+  }
+  .heading-3 {
+    font-size: theme(fontSize.3xl);
+    color: theme(colors.brand);
+    margin-bottom: 0.5em;
+    font-weight: theme(fontWeight.bold);
+
+    @screen lg {
+      font-size: theme(fontSize.4xl);
+    }
+    @screen 2xl {
+      font-size: theme(fontSize.5xl);
+    }
+  }
+  .heading-4 {
+    font-size: theme(fontSize.2xl);
+    color: theme(colors.brand);
+    margin-bottom: 0.5em;
+    font-weight: theme(fontWeight.bold);
+
+    @screen lg {
+      font-size: theme(fontSize.3xl);
+    }
+    @screen 2xl {
+      font-size: theme(fontSize.4xl);
+    }
+  }
+  .heading-5 {
+    font-size: theme(fontSize.xl);
+    color: theme(colors.brand);
+    margin-bottom: 0.5em;
+    font-weight: theme(fontWeight.semibold);
+
+    @screen lg {
+      font-size: theme(fontSize.2xl);
+    }
+    @screen 2xl {
+      font-size: theme(fontSize.3xl);
+    }
+  }
+}
+    

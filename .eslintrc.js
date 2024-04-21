@@ -39,9 +39,6 @@ module.exports = {
       ],
       rules: {
         "prettier/prettier": "error",
-
-        // Relax some TypeScript rules to make them more accessible to beginners.
-        // Remove these if you want to enforce stricter rules.
         "@typescript-eslint/ban-ts-comment": "off",
         "@typescript-eslint/no-explicit-any": "off",
         "@typescript-eslint/no-non-null-assertion": "off",
@@ -60,7 +57,6 @@ module.exports = {
           },
         ],
 
-        // Allow unused variables only if they start with `_` or `err`.
         "no-unused-vars": "off",
         "@typescript-eslint/no-unused-vars": [
           "error",
@@ -72,7 +68,6 @@ module.exports = {
           },
         ],
 
-        // Sort imports.
         "simple-import-sort/imports": [
           "error",
           {

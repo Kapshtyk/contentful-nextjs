@@ -1,23 +1,29 @@
 import { getFrontPage } from "@/lib/api/frontpage";
+import { Markdown } from "@/lib/markdown";
+
+import { Heading } from "@/shared/ui/heading";
 
 export default async function Page() {
   const frontpage = await getFrontPage();
 
-  if (!frontpage[0]) {
+  // console.log(JSON.stringify(frontpage, null, 2));
+
+  if (!frontpage) {
     return <div>Post not found</div>;
   }
 
   return (
-    <div className="container mx-auto px-5">
-      {frontpage[0].title}
-      {frontpage[0].description?.json && (
+    <section>
+      <Heading level={1}>{frontpage.title}</Heading>
+      {frontpage?.description?.json.content && (
         <div>
-          <pre>{JSON.stringify(frontpage[0].description.json, null, 2)}</pre>
+          <Markdown
+            document={frontpage.description.json}
+            links={frontpage.description.links}
+          />
         </div>
       )}
-      {/* {frontpage?.coverImage?.url && (
-        <ContentfulImage src={frontpage.coverImage.url} />
-      )} */}
-    </div>
+      <h1>Pew pew</h1>
+    </section>
   );
 }

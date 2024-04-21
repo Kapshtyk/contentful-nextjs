@@ -56,6 +56,46 @@ export const FRAGMENT_FRONTPAGE = graphql(`
     title
     description {
       json
+      links {
+        entries {
+          block {
+            sys {
+              id
+            }
+          }
+          inline {
+            sys {
+              id
+            }
+          }
+          hyperlink {
+            sys {
+              id
+            }
+            __typename
+            ... on Post {
+              title
+              url
+            }
+          }
+        }
+        assets {
+          block {
+            sys {
+              id
+            }
+            title
+            url
+          }
+          hyperlink {
+            sys {
+              id
+            }
+            title
+            url
+          }
+        }
+      }
     }
     featuredImage {
       url
