@@ -1,6 +1,7 @@
 import { Frontpage as FrontpageType } from "@/lib/graphql/generate/graphql";
 import { Markdown } from "@/lib/markdown";
 
+import { Card } from "@/widgets/card/card";
 import { HeroBanner } from "@/widgets/hero-banner/hero-banner";
 
 interface FrontpageProps {
@@ -20,15 +21,15 @@ export function Frontpage({ frontpage }: FrontpageProps) {
         </div>
       )}
       <div className="w-[100vw] bg-foreground">
-        <div className="container grid grid-cols-1  gap-4 p-8 md:grid-cols-2">
-          <div className="h-56 w-40 rounded-lg bg-background">
-            <h2>Section 1</h2>
-            <p>Section 1 content</p>
-          </div>
-          <div className="h-56 w-40 bg-background">
-            <h2>Section 2</h2>
-            <p>Section 2 content</p>
-          </div>
+        <div className="container grid grid-cols-1 items-start gap-4 p-8 sm:grid-cols-2 lg:grid-cols-3 ">
+          {frontpage.highlightedPostsCollection &&
+            frontpage.highlightedPostsCollection.items.map((post) => {
+              if (!post) {
+                return null;
+              } else {
+                return <Card key={post.slug} post={post} />;
+              }
+            })}
         </div>
       </div>
     </section>

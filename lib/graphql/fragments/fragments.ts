@@ -18,7 +18,7 @@ export const FRAGMENT_POST = graphql(`
     slug
     title
     coverImage {
-      url
+      ...FragmentAsset
     }
     date
     author {
@@ -61,6 +61,8 @@ export const FRAGMENT_ASSET = graphql(`
     }
     url
     description
+    width
+    height
   }
 `);
 
@@ -113,7 +115,7 @@ export const FRAGMENT_FRONTPAGE = graphql(`
       }
     }
     featuredImage {
-      url
+      ...FragmentAsset
     }
     highlightedPostsCollection {
       items {
