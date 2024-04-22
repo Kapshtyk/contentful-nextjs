@@ -9,6 +9,6 @@
     "*.css": "tailwindcss"
   },
   "editor.quickSuggestions": {
-      "strings": true
+    "strings": true
   }
 }

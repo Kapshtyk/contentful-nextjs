@@ -1,5 +1,18 @@
 import { graphql } from "@/lib/graphql/generate/gql";
 
+export const FRAGMENT_HERO = graphql(`
+  fragment FragmentHeroBanner on HeroBanner {
+    title
+    description
+    slogan
+    primaryLink
+    secondaryLink
+    heroImage {
+      ...FragmentAsset
+    }
+  }
+`);
+
 export const FRAGMENT_POST = graphql(`
   fragment FragmentPost on Post {
     slug
@@ -54,6 +67,9 @@ export const FRAGMENT_ASSET = graphql(`
 export const FRAGMENT_FRONTPAGE = graphql(`
   fragment FragmentFrontpage on Frontpage {
     title
+    hero {
+      ...FragmentHeroBanner
+    }
     description {
       json
       links {
@@ -75,7 +91,6 @@ export const FRAGMENT_FRONTPAGE = graphql(`
             __typename
             ... on Post {
               title
-              url
             }
           }
         }

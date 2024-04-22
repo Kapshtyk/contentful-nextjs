@@ -2,15 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
-
 @layer base {
   :root {
-    --background: 255 255 255;
-    --foreground: 51 51 51;
-    --brand: 3 98 128;
-    --brand-light: 51 119 136;
-    --brand-dark: 1 46 74;
-    --accent: 129 190 206;
+    --background: 250 250 250;
+    --foreground: 48 27 43;
+    --brand: 179 158 194;
+    --brand-light: 137 92 120;
+    --brand-dark: 147 91 142;
   }
   html {
     line-height: 1.8;
@@ -33,7 +31,6 @@
 
   .heading-1 {
     font-size: theme(fontSize.5xl);
-    color: theme(colors.brand);
     margin-bottom: 0.5em;
     font-weight: theme(fontWeight.black);
 
@@ -46,7 +43,6 @@
   }
   .heading-2 {
     font-size: theme(fontSize.4xl);
-    color: theme(colors.brand);
     margin-bottom: 0.5em;
     font-weight: theme(fontWeight.extrabold);
 
@@ -59,7 +55,6 @@
   }
   .heading-3 {
     font-size: theme(fontSize.3xl);
-    color: theme(colors.brand);
     margin-bottom: 0.5em;
     font-weight: theme(fontWeight.bold);
 
@@ -72,7 +67,6 @@
   }
   .heading-4 {
     font-size: theme(fontSize.2xl);
-    color: theme(colors.brand);
     margin-bottom: 0.5em;
     font-weight: theme(fontWeight.bold);
 
@@ -85,7 +79,6 @@
   }
   .heading-5 {
     font-size: theme(fontSize.xl);
-    color: theme(colors.brand);
     margin-bottom: 0.5em;
     font-weight: theme(fontWeight.semibold);
 
@@ -97,4 +90,3 @@
     }
   }
 }
-    

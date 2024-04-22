@@ -2,10 +2,11 @@ import "./globals.css";
 
 import { Roboto } from "next/font/google";
 import { draftMode } from "next/headers";
-import Link from "next/link";
 
 import { getMenu } from "@/lib/api/menu";
 import { CMS_NAME } from "@/lib/constants";
+
+import { Header } from "@/widgets/header/header";
 
 export const metadata = {
   title: `Next.js and ${CMS_NAME} Example`,
@@ -28,6 +29,7 @@ export default async function RootLayout({
   children: React.ReactNode;
 }) {
   const { isEnabled } = draftMode();
+
   const menus = await getMenu();
   return (
     <html lang="en" className={roboto.className}>
@@ -37,25 +39,7 @@ export default async function RootLayout({
             Draft mode enabled
           </div>
         )}
-        <header>
-          <nav className="flex w-full items-center p-4">
-            <ul className="flex w-full justify-evenly gap-4">
-              {menus?.menuLinksCollection?.items.map(
-                (menu) =>
-                  menu?.slug && (
-                    <li key={menu.slug}>
-                      <Link
-                        className="block px-4 py-2 text-2xl font-light text-brand transition-all duration-200 ease-in-out hover:bg-brand hover:text-background"
-                        href={menu.slug}
-                      >
-                        {menu?.title}
-                      </Link>
-                    </li>
-                  ),
-              )}
-            </ul>
-          </nav>
-        </header>
+        <Header menus={menus} />
         <section className="min-h-screen">
           <main className="container">{children}</main>
           <Footer />

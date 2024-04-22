@@ -19,6 +19,6 @@ export async function GET(request: Request) {
   } else {
     draftMode().enable();
 
-    redirect(`${process.env.NEXT_PRODUCTION_URL}/posts/${post.slug}`);
+    redirect(`${process.env.NEXT_PRODUCTION_URL}/${post.slug}`);
   }
 }

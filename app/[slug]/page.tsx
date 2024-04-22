@@ -11,7 +11,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
   const { isEnabled } = draftMode();
   const post = await getPostBySlug(params.slug, isEnabled);
   return (
-    <div className="container">
+    <div className="container pt-20">
       <h1 className="text-6xl font-semibold leading-tight">{post?.title}</h1>
       <p className="text-lg font-light leading-loose">{post?.excerpt}</p>
       {post?.coverImage?.url && (
