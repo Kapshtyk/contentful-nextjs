@@ -11,6 +11,8 @@ const buttonVariants = cva(
       variant: {
         default: "bg-brand text-background hover:bg-brand-dark",
         secondary: "bg-brand-light text-background hover:bg-brand-dark",
+        outline:
+          "border border-foreground text-brand-light hover:text-foreground",
       },
       size: {
         default: "h-10 px-4 py-2",
