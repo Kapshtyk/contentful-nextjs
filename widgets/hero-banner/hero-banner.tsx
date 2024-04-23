@@ -16,7 +16,7 @@ export function HeroBanner({ hero }: HeroBannerProps) {
     return null;
   }
   return (
-    <section className="relative flex min-h-[100dvh] w-[100vw] flex-col bg-foreground/50 py-20 ">
+    <section className="relative flex min-h-[100vh] w-[100vw] flex-col bg-foreground/50 py-20 ">
       <div className="flex h-full flex-col gap-4 p-8 md:w-10/12 lg:w-8/12 lg:gap-8 xl:gap-12">
         <Heading
           className="mb-0 text-balance text-6xl leading-none text-background xl:text-8xl"

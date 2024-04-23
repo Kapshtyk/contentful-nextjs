@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import clsx from "clsx";
+import { MenuIcon } from "lucide-react";
 
 import { Menu } from "@/lib/graphql/generate/graphql";
 
@@ -15,7 +16,6 @@ export const Header = ({ menus }: HeaderProps) => {
   if (!menus) {
     return null;
   }
-  console.log(pathname);
   return (
     <header className="absolute z-20 w-full">
       <nav className="flex w-full items-center justify-between p-8">
@@ -25,7 +25,7 @@ export const Header = ({ menus }: HeaderProps) => {
         >
           Arseniiy Kapshtyk
         </Link>
-        <ul className="flex w-full justify-end gap-4">
+        <ul className="hidden w-full justify-end gap-4 sm:flex">
           {menus?.menuLinksCollection?.items.map(
             (menu) =>
               menu?.slug && (
@@ -43,6 +43,7 @@ export const Header = ({ menus }: HeaderProps) => {
               ),
           )}
         </ul>
+        <MenuIcon className="block h-8 w-8 text-background sm:hidden" />
       </nav>
     </header>
   );

@@ -1,5 +1,6 @@
 import "./globals.css";
 
+import type { Viewport } from "next";
 import { Roboto } from "next/font/google";
 import { draftMode } from "next/headers";
 
@@ -7,6 +8,10 @@ import { getMenu } from "@/lib/api/menu";
 import { CMS_NAME } from "@/lib/constants";
 
 import { Header } from "@/widgets/header/header";
+
+export const viewport: Viewport = {
+  themeColor: "#301b2b",
+};
 
 export const metadata = {
   title: `Next.js and ${CMS_NAME} Example`,
