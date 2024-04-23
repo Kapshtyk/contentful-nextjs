@@ -20,6 +20,11 @@ export const FRAGMENT_POST = graphql(`
     coverImage {
       ...FragmentAsset
     }
+    contentfulMetadata {
+      tags {
+        name
+      }
+    }
     date
     author {
       name

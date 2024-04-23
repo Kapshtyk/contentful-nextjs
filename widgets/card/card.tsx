@@ -3,6 +3,7 @@ import Link from "next/link";
 import ContentfulImage from "@/lib/contentful-image";
 import { Post } from "@/lib/graphql/generate/graphql";
 
+import { Badge } from "@/shared/ui/badge";
 import { Heading } from "@/shared/ui/heading";
 import { Paragraph } from "@/shared/ui/paragraph";
 
@@ -34,6 +35,20 @@ export const Card = ({ post }: CardProps) => {
       <Heading level={3} className="mb-0">
         {post.title}
       </Heading>
+      {post.contentfulMetadata.tags && (
+        <div className="flex gap-2">
+          {post.contentfulMetadata.tags.map((tag) => {
+            if (!tag) {
+              return null;
+            }
+            return (
+              <Badge key={tag.name} variant="secondary">
+                {tag.name}
+              </Badge>
+            );
+          })}
+        </div>
+      )}
       <Paragraph>{post.excerpt}</Paragraph>
     </Link>
   );
