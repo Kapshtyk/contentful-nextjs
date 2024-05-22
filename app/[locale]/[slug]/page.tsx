@@ -1,4 +1,5 @@
 import { draftMode } from "next/headers";
+import { unstable_setRequestLocale } from "next-intl/server";
 
 import { getPostBySlug, getSlugs } from "@/lib/api/posts";
 import ContentfulImage from "@/lib/contentful-image";
@@ -10,7 +11,12 @@ export async function generateStaticParams() {
   return await getSlugs();
 }
 
-export default async function Page({ params }: { params: { slug: string } }) {
+export default async function Page({
+  params,
+}: {
+  params: { slug: string; locale: "en" | "ru" };
+}) {
+  unstable_setRequestLocale(params.locale);
   const { isEnabled } = draftMode();
   const post = await getPostBySlug(params.slug, isEnabled);
   return (

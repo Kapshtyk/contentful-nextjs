@@ -5,6 +5,7 @@ import { draftMode } from "next/headers";
 import Link from "next/link";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
+import { unstable_setRequestLocale } from "next-intl/server";
 
 import { getMenu } from "@/lib/api/menu";
 
@@ -32,6 +33,7 @@ export default async function RootLayout({
   children: React.ReactNode;
   params: { locale: "en" | "ru" };
 }) {
+  unstable_setRequestLocale(locale);
   const { isEnabled } = draftMode();
   const messages = await getMessages({ locale });
   const menus = await getMenu();
