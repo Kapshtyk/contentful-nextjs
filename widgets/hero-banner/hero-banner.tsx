@@ -6,6 +6,7 @@ import { Frontpage } from "@/lib/graphql/generate/graphql";
 
 import Arrow from "@/shared/icons/arrow.svg";
 import Corner from "@/shared/icons/corner.svg";
+import { Heading } from "@/shared/ui/heading";
 import { Paragraph } from "@/shared/ui/paragraph";
 
 interface HeroBannerProps {
@@ -28,9 +29,12 @@ export function HeroBanner({ hero }: HeroBannerProps) {
       <Arrow className="absolute hidden h-32 w-32 text-primary-foreground md:bottom-8 md:left-16 md:block lg:left-24" />
       <div className="relative md:w-[65%] md:pl-8 md:pr-[5%] lg:pr-[15%]">
         <div className="flex min-h-[300px] flex-col justify-evenly md:min-h-[460px] md:pl-8 lg:pl-16">
-          <Paragraph className="text-6xl font-black leading-none text-primary-foreground">
+          <Heading
+            level={1}
+            className="text-6xl font-black leading-none text-primary-foreground"
+          >
             {hero.slogan}
-          </Paragraph>
+          </Heading>
           <Paragraph className="text-background">{hero.description}</Paragraph>
         </div>
         {/* <motion.div
