@@ -15,7 +15,7 @@ export const Card = ({ post }: CardProps) => {
   return (
     <Link
       href={`/${post.slug}`}
-      className="bg-card group relative mt-12 flex flex-col gap-4 rounded-lg p-4"
+      className="group relative mt-12 flex flex-col gap-4 rounded-lg bg-card p-4"
     >
       {post?.coverImage?.url && post.coverImage?.width && (
         <div

@@ -106,42 +106,6 @@ export const FRAGMENT_HARD_SKILLS = graphql(`
   }
 `);
 
-export const FRAGMENT_RESUME = graphql(`
-  fragment FragmentResume on Resume {
-    jobTitle
-    slug
-    pitch {
-      json
-    }
-    keyHardSkills {
-      ...FragmentHardSkills
-    }
-    keySoftSkills {
-      ...FragmentSoftSkills
-    }
-    colorPicker
-    experienceCollection {
-      items {
-        ...FragmentExperience
-      }
-    }
-    educationCollection {
-      items {
-        ...FragmentEd
-      }
-    }
-    nonItCollection {
-      items {
-        ...FragmentEd
-      }
-    }
-    languages {
-      title
-      languages
-    }
-  }
-`);
-
 export const FRAGMENT_CONTACTS = graphql(`
   fragment FragmentContacts on ContactDetails {
     title
