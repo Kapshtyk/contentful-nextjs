@@ -1,11 +1,12 @@
 import "./globals.css";
 
 import type { Viewport } from "next";
-import { Roboto } from "next/font/google";
 import { draftMode } from "next/headers";
+import Link from "next/link";
 
 import { getMenu } from "@/lib/api/menu";
-import { CMS_NAME } from "@/lib/constants";
+
+import { roboto } from "./fonts";
 
 import { Header } from "@/widgets/header/header";
 
@@ -14,19 +15,9 @@ export const viewport: Viewport = {
 };
 
 export const metadata = {
-  title: `Next.js and ${CMS_NAME} Example`,
-  description: `This is a blog built with Next.js and ${CMS_NAME}.`,
+  title: "Arseniiy Kapshtyk - Blog",
+  description: `This is a blog about web development, programming, and other related topics.`,
 };
-
-const roboto = Roboto({
-  subsets: ["latin"],
-  display: "swap",
-  weight: ["100", "300", "400", "500", "700", "900"],
-});
-
-function Footer() {
-  return <footer className="bg-accent-1 border-accent-2 border-t"></footer>;
-}
 
 export default async function RootLayout({
   children,
@@ -38,17 +29,25 @@ export default async function RootLayout({
   const menus = await getMenu();
   return (
     <html lang="en" className={roboto.className}>
-      <body className="bg-background">
+      <body className="bg-background ">
         {isEnabled && (
-          <div className="w-full bg-brand-dark text-center text-background">
+          <div className="bg-brand-dark w-full text-center text-background">
             Draft mode enabled
           </div>
         )}
         <Header menus={menus} />
-        <section className="min-h-screen">
-          <main className="container">{children}</main>
-          <Footer />
-        </section>
+        <Link href="#main-content" className="sr-only">
+          Skip to main content
+        </Link>
+        <div>
+          <main
+            id="main-content"
+            className="flex h-screen snap-y snap-mandatory flex-col items-center overflow-x-hidden overflow-y-scroll "
+          >
+            {children}
+          </main>
+        </div>
+        {/* <Footer /> */}
       </body>
     </html>
   );

@@ -14,17 +14,22 @@ interface FrontpageProps {
 
 export function Frontpage({ frontpage }: FrontpageProps) {
   return (
-    <section className="flex flex-col items-center">
+    <>
       <HeroBanner hero={frontpage.hero} />
       {frontpage?.description?.json.content && (
-        <div>
+        <section id="about-me" className="section container min-h-[100vh]">
           <Markdown
             document={frontpage.description.json}
             links={frontpage.description.links}
           />
-        </div>
+        </section>
       )}
-      <div className="w-[100vw] bg-foreground">
+      {frontpage?.technologies?.json.content && (
+        <section className="section container min-h-[100vh]">
+          <Markdown document={frontpage.technologies?.json} />
+        </section>
+      )}
+      <section className="section w-[100vw] bg-slate-800">
         {frontpage.highlightedPostsCollection && (
           <div className="container p-8">
             <div className="block p-6 sm:hidden">
@@ -45,7 +50,7 @@ export function Frontpage({ frontpage }: FrontpageProps) {
             </div>
           </div>
         )}
-      </div>
-    </section>
+      </section>
+    </>
   );
 }

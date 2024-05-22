@@ -5,6 +5,7 @@ import { BLOCKS, Document, INLINES } from "@contentful/rich-text-types";
 
 import { FrontpageDescriptionLinks } from "./graphql/generate/graphql";
 
+import { Blockquote } from "@/shared/ui/blockquote";
 import { Heading } from "@/shared/ui/heading";
 import { ListItem } from "@/shared/ui/list-item";
 import { Paragraph } from "@/shared/ui/paragraph";
@@ -13,9 +14,14 @@ import { UnorderedList } from "@/shared/ui/unordered-list";
 type RichTextProps = {
   document: Document;
   links?: FrontpageDescriptionLinks;
+  className?: string;
 };
 
-export function Markdown({ document, links }: RichTextProps): ReactNode {
+export function Markdown({
+  document,
+  links,
+  className,
+}: RichTextProps): ReactNode {
   const _assetBlockMap = new Map(
     links?.assets?.block?.map((asset) => [asset?.sys.id, asset]),
   );
@@ -57,11 +63,12 @@ export function Markdown({ document, links }: RichTextProps): ReactNode {
         <Heading level={5}>{children}</Heading>
       ),
       [BLOCKS.PARAGRAPH]: (_node, children) => (
-        <Paragraph>{children}</Paragraph>
+        <Paragraph className={className}>{children}</Paragraph>
       ),
       [BLOCKS.UL_LIST]: (_node, children) => (
         <UnorderedList>{children}</UnorderedList>
       ),
+      [BLOCKS.QUOTE]: (_node, children) => <Blockquote>{children}</Blockquote>,
       [BLOCKS.LIST_ITEM]: (_node, children) => <ListItem>{children}</ListItem>,
       [INLINES.ENTRY_HYPERLINK]: (node, children) => {
         const asset = entryMap.get(node.data.target.sys.id);

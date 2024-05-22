@@ -1,21 +1,14 @@
 import type { Config } from "tailwindcss";
+import { fontFamily } from "tailwindcss/defaultTheme";
 
+/** @type {import('tailwindcss').Config} */
 const config = {
   darkMode: ["class"],
   content: ["./app/**/*.{ts,tsx}", "./{shared,widgets,views}/**/*.{ts,tsx}"],
   future: {
     hoverOnlyWhenSupported: true,
   },
-  prefix: "",
   theme: {
-    colors: {
-      background: "rgb(var(--background) / <alpha-value>)",
-      foreground: "rgb(var(--foreground) / <alpha-value>)",
-      brand: "rgb(var(--brand) / <alpha-value>)",
-      "brand-light": "rgb(var(--brand-light) / <alpha-value>)",
-      "brand-dark": "rgb(var(--brand-dark) / <alpha-value>)",
-      accent: "rgb(var(--accent) / <alpha-value>)",
-    },
     container: {
       center: true,
       padding: "2rem",
@@ -24,9 +17,55 @@ const config = {
       },
     },
     extend: {
+      fontSize: {
+        xxs: "12px",
+      },
       boxShadow: {
         "3xl":
           "0 16px 38px -12px rgba(0, 0, 0, 0.56), 0 4px 25px 0px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2);",
+      },
+      colors: {
+        border: "hsl(var(--border))",
+        input: "hsl(var(--input))",
+        ring: "hsl(var(--ring))",
+        background: "hsl(var(--background))",
+        foreground: "hsl(var(--foreground))",
+        primary: {
+          DEFAULT: "hsl(var(--primary))",
+          foreground: "hsl(var(--primary-foreground))",
+        },
+        secondary: {
+          DEFAULT: "hsl(var(--secondary))",
+          foreground: "hsl(var(--secondary-foreground))",
+        },
+        destructive: {
+          DEFAULT: "hsl(var(--destructive))",
+          foreground: "hsl(var(--destructive-foreground))",
+        },
+        muted: {
+          DEFAULT: "hsl(var(--muted))",
+          foreground: "hsl(var(--muted-foreground))",
+        },
+        accent: {
+          DEFAULT: "hsl(var(--accent))",
+          foreground: "hsl(var(--accent-foreground))",
+        },
+        popover: {
+          DEFAULT: "hsl(var(--popover))",
+          foreground: "hsl(var(--popover-foreground))",
+        },
+        card: {
+          DEFAULT: "hsl(var(--card))",
+          foreground: "hsl(var(--card-foreground))",
+        },
+      },
+      borderRadius: {
+        lg: `var(--radius)`,
+        md: `calc(var(--radius) - 2px)`,
+        sm: "calc(var(--radius) - 4px)",
+      },
+      fontFamily: {
+        sans: ["var(--font-sans)", ...fontFamily.sans],
       },
       keyframes: {
         "accordion-down": {

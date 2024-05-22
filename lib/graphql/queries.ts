@@ -1,5 +1,35 @@
 import { graphql } from "@/lib/graphql/generate/gql";
 
+export const GET_RESUME = graphql(`
+  query GetResume($slug: String!) {
+    resumeCollection(where: { slug: $slug }, limit: 1) {
+      items {
+        ...FragmentResume
+      }
+    }
+  }
+`);
+
+export const GET_RESUME_PREVIEW = graphql(`
+  query GetResumePreview($slug: String!) {
+    resumeCollection(where: { slug: $slug }, preview: true, limit: 1) {
+      items {
+        ...FragmentResume
+      }
+    }
+  }
+`);
+
+export const GET_CONTACTS = graphql(`
+  query GetContacts {
+    contactDetailsCollection(limit: 1) {
+      items {
+        ...FragmentContacts
+      }
+    }
+  }
+`);
+
 export const GET_POSTS = graphql(`
   query GetPosts {
     postCollection {

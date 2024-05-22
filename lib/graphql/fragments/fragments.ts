@@ -13,6 +13,151 @@ export const FRAGMENT_HERO = graphql(`
   }
 `);
 
+export const FRAGMENT_FRONTEND = graphql(`
+  fragment FragmentFrontend on Frontend {
+    sys {
+      id
+    }
+    title
+    languages
+    librariesframeworks
+    styling
+    stateManagement
+    otherTools
+  }
+`);
+
+export const FRAGMENT_BACKEND = graphql(`
+  fragment FragmentBackend on Backend {
+    sys {
+      id
+    }
+    title
+    languages
+    librariesframeworks
+    cms
+    dataTransfer
+  }
+`);
+
+export const FRAGMENT_TESTING = graphql(`
+  fragment FragmentTesting on Testing {
+    sys {
+      id
+    }
+    title
+    unitTesting
+    endToEndTesting
+    apiTesting
+  }
+`);
+
+export const FRAGMENT_EXPERIENCE = graphql(`
+  fragment FragmentExperience on Experience {
+    sys {
+      id
+    }
+    title
+    description
+    contentfulMetadata {
+      tags {
+        name
+      }
+    }
+  }
+`);
+
+export const FRAGMENT_EDUCATION_OR_NON_RELEVANT_EXPERIENCE = graphql(`
+  fragment FragmentEd on EducationOrNonRelevantExperience {
+    sys {
+      id
+    }
+    title
+    institutionoremployer
+    description
+    startDate
+    endDate
+    isRelevant
+  }
+`);
+
+export const FRAGMENT_SOFT_SKILLS = graphql(`
+  fragment FragmentSoftSkills on SoftSkills {
+    sys {
+      id
+    }
+    title
+    softSkills
+  }
+`);
+
+export const FRAGMENT_HARD_SKILLS = graphql(`
+  fragment FragmentHardSkills on HardSkills {
+    title
+    frontend {
+      ...FragmentFrontend
+    }
+    backend {
+      ...FragmentBackend
+    }
+    testing {
+      ...FragmentTesting
+    }
+  }
+`);
+
+export const FRAGMENT_RESUME = graphql(`
+  fragment FragmentResume on Resume {
+    jobTitle
+    slug
+    pitch {
+      json
+    }
+    keyHardSkills {
+      ...FragmentHardSkills
+    }
+    keySoftSkills {
+      ...FragmentSoftSkills
+    }
+    colorPicker
+    experienceCollection {
+      items {
+        ...FragmentExperience
+      }
+    }
+    educationCollection {
+      items {
+        ...FragmentEd
+      }
+    }
+    nonItCollection {
+      items {
+        ...FragmentEd
+      }
+    }
+    languages {
+      title
+      languages
+    }
+  }
+`);
+
+export const FRAGMENT_CONTACTS = graphql(`
+  fragment FragmentContacts on ContactDetails {
+    title
+    contactCollection {
+      items {
+        sys {
+          id
+        }
+        title
+        value
+        type
+      }
+    }
+  }
+`);
+
 export const FRAGMENT_POST = graphql(`
   fragment FragmentPost on Post {
     slug
@@ -118,6 +263,9 @@ export const FRAGMENT_FRONTPAGE = graphql(`
           }
         }
       }
+    }
+    technologies {
+      json
     }
     featuredImage {
       ...FragmentAsset
