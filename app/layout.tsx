@@ -11,7 +11,7 @@ import { roboto } from "./fonts";
 import { Header } from "@/widgets/header/header";
 
 export const viewport: Viewport = {
-  themeColor: "#301b2b",
+  themeColor: "#6fc96e",
 };
 
 export const metadata = {
