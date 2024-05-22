@@ -42,7 +42,7 @@ export default async function RootLayout({
         <div>
           <main
             id="main-content"
-            className="flex h-screen snap-y snap-mandatory flex-col items-center overflow-x-hidden overflow-y-scroll "
+            className="flex h-screen snap-y snap-proximity flex-col items-center overflow-x-hidden overflow-y-scroll "
           >
             {children}
           </main>

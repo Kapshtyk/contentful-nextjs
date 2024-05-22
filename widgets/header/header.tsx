@@ -45,7 +45,7 @@ export const Header = ({ menus }: HeaderProps) => {
       className="group fixed z-50 w-full"
       data-status={scrollPosition > 75 ? "hidden" : "visible"}
     >
-      <nav className="flex w-full items-center justify-between p-8">
+      <nav className="flex w-full items-center justify-between p-4 md:p-8">
         <Link
           href="/"
           aria-label="Arseniiy Kapshtyk's blog - Home"

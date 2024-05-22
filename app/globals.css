@@ -78,9 +78,9 @@
   }
   
   .section {
-    padding-block: theme(spacing.10);
+    padding-block: theme(spacing.14);
     scroll-snap-align: start;
-    min-height: 100vh;
+    min-height: 100dvh;
     
     @screen lg {
       padding-block: theme(spacing.20);
