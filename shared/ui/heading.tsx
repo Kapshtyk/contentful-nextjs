@@ -19,7 +19,7 @@ export const Heading = ({
   ...props
 }: HeadingProps) => {
   const Tag = motion[`h${level}` as keyof typeof motion] as React.ElementType;
-  const [ref, inView] = useInView({
+  const [ref] = useInView({
     triggerOnce: true,
   });
 
@@ -27,6 +27,7 @@ export const Heading = ({
     <Tag
       ref={ref}
       initial={{ opacity: 0, x: -10 }}
+      viewport={{ once: true }}
       whileInView={{
         opacity: 1,
         x: 0,
