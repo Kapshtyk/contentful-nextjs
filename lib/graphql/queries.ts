@@ -51,8 +51,8 @@ export const GET_POST_PREVIEW = graphql(`
 `);
 
 export const GET_FRONTPAGE = graphql(`
-  query GetFrontpage($limit: Int!) {
-    frontpageCollection(limit: $limit) {
+  query GetFrontpage($limit: Int!, $locale: String!) {
+    frontpageCollection(limit: $limit, locale: $locale) {
       items {
         ...FragmentFrontpage
       }

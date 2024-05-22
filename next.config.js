@@ -1,5 +1,9 @@
+const createNextIntlPlugin = require("next-intl/plugin");
+
+const withNextIntl = createNextIntlPlugin();
+
 /** @type {import('next').NextConfig} */
-module.exports = {
+const nextConfig = {
   webpack(config) {
     const fileLoaderRule = config.module.rules.find((rule) =>
       rule.test?.test?.(".svg"),
@@ -49,3 +53,5 @@ module.exports = {
 const cspHeader = `
     frame-ancestors 'self' https://app.contentful.com;
 `;
+
+module.exports = withNextIntl(nextConfig);

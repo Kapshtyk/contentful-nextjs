@@ -34,7 +34,7 @@ export const Header = ({ menus }: HeaderProps) => {
             const isMovingUpwards = boundingClientRectY < 0;
             const isMovingDownwards = boundingClientRectY > 0;
             const isIntersectingEnough = intersectionRatio > 0.15;
-            const isStrongIntersection = intersectionRatio > 0.6;
+            const isStrongIntersection = intersectionRatio > 0.55;
 
             if (
               (isMovingUpwards && isIntersectingEnough) ||

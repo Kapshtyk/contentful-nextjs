@@ -59,6 +59,7 @@
     color: #333;
     font-weight: theme(fontWeight.light);
     overflow-x: hidden;    
+    overscroll-behavior-block: none;
 
     @screen sm {
       font-size: 112.5%;

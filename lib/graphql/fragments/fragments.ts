@@ -15,9 +15,6 @@ export const FRAGMENT_HERO = graphql(`
 
 export const FRAGMENT_FRONTEND = graphql(`
   fragment FragmentFrontend on Frontend {
-    sys {
-      id
-    }
     title
     languages
     librariesframeworks
@@ -194,9 +191,7 @@ export const FRAGMENT_FRONTPAGE = graphql(`
       links {
         entries {
           block {
-            sys {
-              id
-            }
+            __typename
             ... on Frontend {
               ...FragmentFrontend
             } 

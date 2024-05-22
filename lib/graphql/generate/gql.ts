@@ -14,7 +14,7 @@ import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/
  */
 const documents = {
     "\n  fragment FragmentHeroBanner on HeroBanner {\n    title\n    description\n    slogan\n    primaryLink\n    secondaryLink\n    heroImage {\n      ...FragmentAsset\n    }\n  }\n": types.FragmentHeroBannerFragmentDoc,
-    "\n  fragment FragmentFrontend on Frontend {\n    sys {\n      id\n    }\n    title\n    languages\n    librariesframeworks\n    styling\n    stateManagement\n    otherTools\n  }\n": types.FragmentFrontendFragmentDoc,
+    "\n  fragment FragmentFrontend on Frontend {\n    title\n    languages\n    librariesframeworks\n    styling\n    stateManagement\n    otherTools\n  }\n": types.FragmentFrontendFragmentDoc,
     "\n  fragment FragmentBackend on Backend {\n    sys {\n      id\n    }\n    title\n    languages\n    librariesframeworks\n    cms\n    dataTransfer\n  }\n": types.FragmentBackendFragmentDoc,
     "\n  fragment FragmentTesting on Testing {\n    sys {\n      id\n    }\n    title\n    unitTesting\n    endToEndTesting\n    apiTesting\n  }\n": types.FragmentTestingFragmentDoc,
     "\n  fragment FragmentExperience on Experience {\n    sys {\n      id\n    }\n    title\n    description\n    contentfulMetadata {\n      tags {\n        name\n      }\n    }\n  }\n": types.FragmentExperienceFragmentDoc,
@@ -25,13 +25,13 @@ const documents = {
     "\n  fragment FragmentPost on Post {\n    slug\n    title\n    coverImage {\n      ...FragmentAsset\n    }\n    contentfulMetadata {\n      tags {\n        name\n      }\n    }\n    date\n    author {\n      name\n      picture {\n        url\n      }\n    }\n    excerpt\n    content {\n      json\n      links {\n        assets {\n          block {\n            sys {\n              id\n            }\n            url\n            description\n          }\n        }\n      }\n    }\n  }\n": types.FragmentPostFragmentDoc,
     "\n  fragment FragmentAuthor on Author {\n    name\n    picture {\n      url\n    }\n  }\n": types.FragmentAuthorFragmentDoc,
     "\n  fragment FragmentAsset on Asset {\n    sys {\n      id\n    }\n    url\n    description\n    width\n    height\n  }\n": types.FragmentAssetFragmentDoc,
-    "\n  fragment FragmentFrontpage on Frontpage {\n    title\n    hero {\n      ...FragmentHeroBanner\n    }\n    description {\n      json\n    }\n    technologies {\n      json\n      links {\n        entries {\n          block {\n            sys {\n              id\n            }\n            ... on Frontend {\n              ...FragmentFrontend\n            } \n          }\n        } \n      }\n    }\n    featuredImage {\n      ...FragmentAsset\n    }\n    highlightedPostsCollection {\n      items {\n        ...FragmentPost\n      }\n    }\n  }\n": types.FragmentFrontpageFragmentDoc,
+    "\n  fragment FragmentFrontpage on Frontpage {\n    title\n    hero {\n      ...FragmentHeroBanner\n    }\n    description {\n      json\n    }\n    technologies {\n      json\n      links {\n        entries {\n          block {\n            __typename\n            ... on Frontend {\n              ...FragmentFrontend\n            } \n          }\n        } \n      }\n    }\n    featuredImage {\n      ...FragmentAsset\n    }\n    highlightedPostsCollection {\n      items {\n        ...FragmentPost\n      }\n    }\n  }\n": types.FragmentFrontpageFragmentDoc,
     "\n  query GetContacts {\n    contactDetailsCollection(limit: 1) {\n      items {\n        ...FragmentContacts\n      }\n    }\n  }\n": types.GetContactsDocument,
     "\n  query GetPosts {\n    postCollection {\n      items {\n        ...FragmentPost\n      }\n    }\n  }\n": types.GetPostsDocument,
     "\n  query GetPost($slug: String!) {\n    postCollection(where: { slug: $slug }, limit: 1) {\n      items {\n        ...FragmentPost\n      }\n    }\n  }\n": types.GetPostDocument,
     "\n  query GetPostsSlugs {\n    postCollection {\n      items {\n        slug\n      }\n    }\n  }\n": types.GetPostsSlugsDocument,
     "\n  query GetPostPreview($slug: String!) {\n    postCollection(where: { slug: $slug }, preview: true, limit: 1) {\n      items {\n        ...FragmentPost\n      }\n    }\n  }\n": types.GetPostPreviewDocument,
-    "\n  query GetFrontpage($limit: Int!) {\n    frontpageCollection(limit: $limit) {\n      items {\n        ...FragmentFrontpage\n      }\n    }\n  }\n": types.GetFrontpageDocument,
+    "\n  query GetFrontpage($limit: Int!, $locale: String!) {\n    frontpageCollection(limit: $limit, locale: $locale) {\n      items {\n        ...FragmentFrontpage\n      }\n    }\n  }\n": types.GetFrontpageDocument,
     "\n  query getMenu {\n    menuCollection(limit: 1) {\n      items {\n        menuLinksCollection {\n          items {\n            slug\n            title\n          }\n        }\n      }\n    }\n  }\n": types.GetMenuDocument,
 };
 
@@ -56,7 +56,7 @@ export function graphql(source: "\n  fragment FragmentHeroBanner on HeroBanner {
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function graphql(source: "\n  fragment FragmentFrontend on Frontend {\n    sys {\n      id\n    }\n    title\n    languages\n    librariesframeworks\n    styling\n    stateManagement\n    otherTools\n  }\n"): (typeof documents)["\n  fragment FragmentFrontend on Frontend {\n    sys {\n      id\n    }\n    title\n    languages\n    librariesframeworks\n    styling\n    stateManagement\n    otherTools\n  }\n"];
+export function graphql(source: "\n  fragment FragmentFrontend on Frontend {\n    title\n    languages\n    librariesframeworks\n    styling\n    stateManagement\n    otherTools\n  }\n"): (typeof documents)["\n  fragment FragmentFrontend on Frontend {\n    title\n    languages\n    librariesframeworks\n    styling\n    stateManagement\n    otherTools\n  }\n"];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
@@ -100,7 +100,7 @@ export function graphql(source: "\n  fragment FragmentAsset on Asset {\n    sys 
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function graphql(source: "\n  fragment FragmentFrontpage on Frontpage {\n    title\n    hero {\n      ...FragmentHeroBanner\n    }\n    description {\n      json\n    }\n    technologies {\n      json\n      links {\n        entries {\n          block {\n            sys {\n              id\n            }\n            ... on Frontend {\n              ...FragmentFrontend\n            } \n          }\n        } \n      }\n    }\n    featuredImage {\n      ...FragmentAsset\n    }\n    highlightedPostsCollection {\n      items {\n        ...FragmentPost\n      }\n    }\n  }\n"): (typeof documents)["\n  fragment FragmentFrontpage on Frontpage {\n    title\n    hero {\n      ...FragmentHeroBanner\n    }\n    description {\n      json\n    }\n    technologies {\n      json\n      links {\n        entries {\n          block {\n            sys {\n              id\n            }\n            ... on Frontend {\n              ...FragmentFrontend\n            } \n          }\n        } \n      }\n    }\n    featuredImage {\n      ...FragmentAsset\n    }\n    highlightedPostsCollection {\n      items {\n        ...FragmentPost\n      }\n    }\n  }\n"];
+export function graphql(source: "\n  fragment FragmentFrontpage on Frontpage {\n    title\n    hero {\n      ...FragmentHeroBanner\n    }\n    description {\n      json\n    }\n    technologies {\n      json\n      links {\n        entries {\n          block {\n            __typename\n            ... on Frontend {\n              ...FragmentFrontend\n            } \n          }\n        } \n      }\n    }\n    featuredImage {\n      ...FragmentAsset\n    }\n    highlightedPostsCollection {\n      items {\n        ...FragmentPost\n      }\n    }\n  }\n"): (typeof documents)["\n  fragment FragmentFrontpage on Frontpage {\n    title\n    hero {\n      ...FragmentHeroBanner\n    }\n    description {\n      json\n    }\n    technologies {\n      json\n      links {\n        entries {\n          block {\n            __typename\n            ... on Frontend {\n              ...FragmentFrontend\n            } \n          }\n        } \n      }\n    }\n    featuredImage {\n      ...FragmentAsset\n    }\n    highlightedPostsCollection {\n      items {\n        ...FragmentPost\n      }\n    }\n  }\n"];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
@@ -124,7 +124,7 @@ export function graphql(source: "\n  query GetPostPreview($slug: String!) {\n   
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function graphql(source: "\n  query GetFrontpage($limit: Int!) {\n    frontpageCollection(limit: $limit) {\n      items {\n        ...FragmentFrontpage\n      }\n    }\n  }\n"): (typeof documents)["\n  query GetFrontpage($limit: Int!) {\n    frontpageCollection(limit: $limit) {\n      items {\n        ...FragmentFrontpage\n      }\n    }\n  }\n"];
+export function graphql(source: "\n  query GetFrontpage($limit: Int!, $locale: String!) {\n    frontpageCollection(limit: $limit, locale: $locale) {\n      items {\n        ...FragmentFrontpage\n      }\n    }\n  }\n"): (typeof documents)["\n  query GetFrontpage($limit: Int!, $locale: String!) {\n    frontpageCollection(limit: $limit, locale: $locale) {\n      items {\n        ...FragmentFrontpage\n      }\n    }\n  }\n"];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */

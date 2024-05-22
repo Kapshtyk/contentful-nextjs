@@ -8,6 +8,7 @@ import { CardsCarousel } from "@/entities/carousel/carousel";
 import { Section } from "@/shared/ui/section";
 import { Card } from "@/widgets/card/card";
 import { HeroBanner } from "@/widgets/hero-banner/hero-banner";
+import { Technologies } from "@/widgets/technologies";
 
 interface FrontpageProps {
   frontpage: FrontpageType;
@@ -28,6 +29,9 @@ export function Frontpage({ frontpage }: FrontpageProps) {
       {frontpage?.technologies?.json.content && (
         <Section id="technologies" data-style="inversed">
           <Markdown inversed document={frontpage.technologies?.json} />
+          {frontpage.technologies?.links?.entries?.block && (
+            <Technologies {...frontpage.technologies} />
+          )}
         </Section>
       )}
       <section className="section w-[100vw] bg-slate-800">
