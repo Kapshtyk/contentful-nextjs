@@ -47,11 +47,15 @@ export const Header = ({ menus }: HeaderProps) => {
     >
       <nav className="flex w-full items-center justify-between p-4 md:p-8">
         <Link
+          id="logo"
           href="/"
           aria-label="Arseniiy Kapshtyk's blog - Home"
           className={clsx(
-            "relative flex items-center text-4xl text-background after:content-['Arseniiy_Kapshtyk'] group-data-[status=hidden]:text-primary",
+            "relative flex items-center text-4xl text-background after:content-['Arseniiy_Kapshtyk']",
             "transition-colors duration-150 group-data-[status=hidden]:after:content-[''] lg:text-5xl",
+            {
+              ["text-primary"]: scrollPosition > 75,
+            },
             cookie.className,
           )}
         >

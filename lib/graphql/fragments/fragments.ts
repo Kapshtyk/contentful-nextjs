@@ -188,48 +188,21 @@ export const FRAGMENT_FRONTPAGE = graphql(`
     }
     description {
       json
+    }
+    technologies {
+      json
       links {
         entries {
           block {
             sys {
               id
             }
+            ... on Frontend {
+              ...FragmentFrontend
+            } 
           }
-          inline {
-            sys {
-              id
-            }
-          }
-          hyperlink {
-            sys {
-              id
-            }
-            __typename
-            ... on Post {
-              title
-            }
-          }
-        }
-        assets {
-          block {
-            sys {
-              id
-            }
-            title
-            url
-          }
-          hyperlink {
-            sys {
-              id
-            }
-            title
-            url
-          }
-        }
+        } 
       }
-    }
-    technologies {
-      json
     }
     featuredImage {
       ...FragmentAsset

@@ -80,7 +80,8 @@
   .section {
     padding-block: theme(spacing.14);
     scroll-snap-align: start;
-    min-height: 100dvh;
+    min-width: 100vw;
+    z-index: -20;
     
     @screen lg {
       padding-block: theme(spacing.20);

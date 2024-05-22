@@ -5,6 +5,7 @@ import {
 import { Markdown } from "@/lib/markdown";
 
 import { CardsCarousel } from "@/entities/carousel/carousel";
+import { Section } from "@/shared/ui/section";
 import { Card } from "@/widgets/card/card";
 import { HeroBanner } from "@/widgets/hero-banner/hero-banner";
 
@@ -17,17 +18,17 @@ export function Frontpage({ frontpage }: FrontpageProps) {
     <>
       <HeroBanner hero={frontpage.hero} />
       {frontpage?.description?.json.content && (
-        <section id="about-me" className="section container min-h-[100vh]">
+        <Section id="about-me">
           <Markdown
             document={frontpage.description.json}
             links={frontpage.description.links}
           />
-        </section>
+        </Section>
       )}
       {frontpage?.technologies?.json.content && (
-        <section className="section container min-h-[100vh]">
-          <Markdown document={frontpage.technologies?.json} />
-        </section>
+        <Section id="technologies" data-style="inversed">
+          <Markdown inversed document={frontpage.technologies?.json} />
+        </Section>
       )}
       <section className="section w-[100vw] bg-slate-800">
         {frontpage.highlightedPostsCollection && (

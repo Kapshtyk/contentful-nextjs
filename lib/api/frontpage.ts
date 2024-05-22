@@ -14,9 +14,5 @@ export async function getFrontPage(): Promise<Frontpage | null> {
   >(GET_FRONTPAGE, {
     limit: 1,
   });
-  if (entries.frontpageCollection?.items[0]?.description?.links) {
-    return entries.frontpageCollection.items[0] as Frontpage;
-  } else {
-    return null;
-  }
+  return entries.frontpageCollection?.items[0] as Frontpage;
 }

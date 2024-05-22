@@ -15,12 +15,14 @@ type RichTextProps = {
   document: Document;
   links?: FrontpageDescriptionLinks;
   className?: string;
+  inversed?: boolean;
 };
 
 export function Markdown({
   document,
   links,
   className,
+  inversed = false,
 }: RichTextProps): ReactNode {
   const _assetBlockMap = new Map(
     links?.assets?.block?.map((asset) => [asset?.sys.id, asset]),
@@ -48,19 +50,29 @@ export function Markdown({
   return documentToReactComponents(document, {
     renderNode: {
       [BLOCKS.HEADING_1]: (_node, children) => (
-        <Heading level={1}>{children}</Heading>
+        <Heading inversed={inversed} level={1}>
+          {children}
+        </Heading>
       ),
       [BLOCKS.HEADING_2]: (_node, children) => (
-        <Heading level={2}>{children}</Heading>
+        <Heading inversed={inversed} level={2}>
+          {children}
+        </Heading>
       ),
       [BLOCKS.HEADING_3]: (_node, children) => (
-        <Heading level={3}>{children}</Heading>
+        <Heading inversed={inversed} level={3}>
+          {children}
+        </Heading>
       ),
       [BLOCKS.HEADING_4]: (_node, children) => (
-        <Heading level={4}>{children}</Heading>
+        <Heading inversed={inversed} level={4}>
+          {children}
+        </Heading>
       ),
       [BLOCKS.HEADING_5]: (_node, children) => (
-        <Heading level={5}>{children}</Heading>
+        <Heading inversed={inversed} level={5}>
+          {children}
+        </Heading>
       ),
       [BLOCKS.PARAGRAPH]: (_node, children) => (
         <Paragraph className={className}>{children}</Paragraph>
@@ -68,7 +80,9 @@ export function Markdown({
       [BLOCKS.UL_LIST]: (_node, children) => (
         <UnorderedList>{children}</UnorderedList>
       ),
-      [BLOCKS.QUOTE]: (_node, children) => <Blockquote>{children}</Blockquote>,
+      [BLOCKS.QUOTE]: (_node, children) => (
+        <Blockquote inversed={inversed}>{children}</Blockquote>
+      ),
       [BLOCKS.LIST_ITEM]: (_node, children) => <ListItem>{children}</ListItem>,
       [INLINES.ENTRY_HYPERLINK]: (node, children) => {
         const asset = entryMap.get(node.data.target.sys.id);

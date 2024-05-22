@@ -20,8 +20,8 @@ export function HeroBanner({ hero }: HeroBannerProps) {
   return (
     <section
       className={clsx(
-        "section relative flex w-[100vw] flex-col items-center bg-gradient-to-b from-primary from-70% to-primary-foreground",
-        "to-70% px-4 pt-20 md:flex-row md:bg-gradient-to-r md:px-0 md:pt-20 lg:from-65% lg:to-65%",
+        "section relative flex flex-col items-center bg-gradient-to-b from-primary from-70% to-primary-foreground",
+        "min-h-screen to-70% px-4 pt-20 md:flex-row md:bg-gradient-to-r md:px-0 md:pt-20 lg:from-65% lg:to-65%",
       )}
     >
       <Corner className="absolute hidden h-32 w-32 -rotate-90 text-primary md:bottom-8 md:right-4 md:block lg:right-8" />
