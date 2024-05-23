@@ -15,7 +15,7 @@ export const Heading = ({
   styledAs = level,
   inversed = false,
   children,
-  className = "",
+  className,
   ...props
 }: HeadingProps) => {
   const Tag = motion[`h${level}` as keyof typeof motion] as React.ElementType;
@@ -34,14 +34,13 @@ export const Heading = ({
       }}
       transition={{ duration: 0.5, delay: 0.2 }}
       {...props}
-      className={clsx({
+      className={clsx(className, {
         ["heading-1"]: styledAs === 1,
         ["heading-2"]: styledAs === 2,
         ["heading-3"]: styledAs === 3,
         ["heading-4"]: styledAs === 4,
         ["heading-5"]: styledAs === 5,
         ["text-white"]: inversed,
-        [className]: className.length > 0,
       })}
     >
       {children}

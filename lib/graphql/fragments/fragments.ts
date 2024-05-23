@@ -1,12 +1,22 @@
 import { graphql } from "@/lib/graphql/generate/gql";
 
+export const FRAGMENT_TECH = graphql(`
+  fragment FragmentTech on Technologies {
+    title
+    frontend {
+      ...FragmentFrontend
+    }
+    backend {
+      ...FragmentBackend
+    }
+  }
+`);
+
 export const FRAGMENT_HERO = graphql(`
   fragment FragmentHeroBanner on HeroBanner {
     title
     description
     slogan
-    primaryLink
-    secondaryLink
     heroImage {
       ...FragmentAsset
     }
@@ -26,22 +36,17 @@ export const FRAGMENT_FRONTEND = graphql(`
 
 export const FRAGMENT_BACKEND = graphql(`
   fragment FragmentBackend on Backend {
-    sys {
-      id
-    }
     title
     languages
     librariesframeworks
     cms
     dataTransfer
+    databases
   }
 `);
 
 export const FRAGMENT_TESTING = graphql(`
   fragment FragmentTesting on Testing {
-    sys {
-      id
-    }
     title
     unitTesting
     endToEndTesting
@@ -131,27 +136,9 @@ export const FRAGMENT_POST = graphql(`
         name
       }
     }
-    date
-    author {
-      name
-      picture {
-        url
-      }
-    }
     excerpt
     content {
       json
-      links {
-        assets {
-          block {
-            sys {
-              id
-            }
-            url
-            description
-          }
-        }
-      }
     }
   }
 `);
@@ -186,18 +173,8 @@ export const FRAGMENT_FRONTPAGE = graphql(`
     description {
       json
     }
-    technologies {
-      json
-      links {
-        entries {
-          block {
-            __typename
-            ... on Frontend {
-              ...FragmentFrontend
-            } 
-          }
-        } 
-      }
+    tech {
+      ...FragmentTech
     }
     featuredImage {
       ...FragmentAsset

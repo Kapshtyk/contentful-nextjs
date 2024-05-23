@@ -26,12 +26,9 @@ export function Frontpage({ frontpage }: FrontpageProps) {
           />
         </Section>
       )}
-      {frontpage?.technologies?.json.content && (
+      {frontpage.tech && (
         <Section id="technologies" data-style="inversed">
-          <Markdown inversed document={frontpage.technologies?.json} />
-          {frontpage.technologies?.links?.entries?.block && (
-            <Technologies {...frontpage.technologies} />
-          )}
+          <Technologies {...frontpage.tech} />
         </Section>
       )}
       <section className="section w-[100vw] bg-slate-800">

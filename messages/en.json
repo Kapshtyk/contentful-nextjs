@@ -1,7 +1,16 @@
 { 
-  "languages": "Programming Languages",
-  "librariesframeworks": "Libraries & Frameworks",
+  "Backend": "Backend",
+  "Frontend": "Frontend",
+  "Testing": "Testing",
+  "languages": "Programming languages",
+  "librariesframeworks": "Libraries & frameworks",
   "styling": "Styling",
-  "stateManagement": "State Management",
-  "otherTools": "Other Tools"
+  "stateManagement": "State management",
+  "otherTools": "Other tools and skills",
+  "dataTransfer": "Data transfer",
+  "cms": "Content management systems",
+  "unitTesting": "Unit testing",
+  "endToEndTesting": "End-to-End testing",
+  "apiTesting": "API testing",
+  "databases": "Databases"
 }

@@ -11,7 +11,7 @@ export const Blockquote = ({ children, inversed = false }: BlockquoteProps) => {
   return (
     <blockquote
       className={clsx(
-        "relative max-w-lg border-l-[24px] border-primary py-4 pl-4 italic",
+        "relative max-w-lg border-l-[12px] border-primary py-4 pl-4 italic md:border-l-[24px]",
         {
           ["border-white"]: inversed,
         },

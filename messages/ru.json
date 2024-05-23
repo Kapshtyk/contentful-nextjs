@@ -1,7 +1,16 @@
 {
+  "Backend": "Бэкенд",
+  "Frontend": "Фронтенд",
+  "Testing": "Тестирование",
   "languages": "Языки программирования",
   "librariesframeworks": "Библиотеки и фреймворки",
   "styling": "Стилизация",
   "stateManagement": "Управление состоянием",
-  "otherTools": "Другие инструменты"
+  "otherTools": "Другие инструменты и навыки",
+  "dataTransfer": "Передача данных",
+  "cms": "Системы управления контентом",
+  "unitTesting": "Модульное тестирование",
+  "endToEndTesting": "Сквозное тестирование",
+  "apiTesting": "Тестирование API",
+  "databases": "Базы данных"
 }

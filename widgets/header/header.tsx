@@ -110,7 +110,9 @@ export const Header = ({ menus }: HeaderProps) => {
                   <Link
                     className={clsx(
                       "relative block px-4 py-2 text-xl font-light after:absolute after:bottom-0 after:left-1/2 after:h-[3px] after:w-0 after:translate-x-[-50%] after:bg-primary after:transition-all after:duration-150 after:content-[''] hover:after:w-full lg:text-2xl",
-                      pathname === "/" ? "text-background" : "text-background",
+                      pathname === "/en" || pathname === "/ru"
+                        ? "text-background"
+                        : "text-foreground",
                     )}
                     href={`#${menu.slug}`}
                   >

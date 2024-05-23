@@ -11,7 +11,7 @@ type ParagraphProps = HTMLAttributes<HTMLParagraphElement> &
 
 export const Paragraph = ({
   children,
-  className = "",
+  className,
   ...props
 }: ParagraphProps) => {
   return (
@@ -23,9 +23,10 @@ export const Paragraph = ({
         x: 0,
       }}
       transition={{ duration: 0.5, delay: 0.4 }}
-      className={clsx("group:inline mb-2 group-[.list-inside]:inline", {
-        [className]: className.length > 0,
-      })}
+      className={clsx(
+        "group:inline mb-2 group-[.list-inside]:inline",
+        className,
+      )}
       {...props}
     >
       {children}
