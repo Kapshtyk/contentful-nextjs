@@ -18,3 +18,5 @@ export default async function Page({
   }
   return <Frontpage frontpage={frontpage} />;
 }
+
+export const revalidate = 7200;

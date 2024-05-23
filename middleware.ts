@@ -1,17 +1,8 @@
-import { NextRequest, NextResponse } from "next/server";
-import createMiddleware from "next-intl/middleware";
+import { NextResponse } from "next/server";
 
-import { defaultLocale, locales } from "./i18n";
+import { withInternationalisation } from "@/lib/middleware/withInternatianalisation";
 
-const nextIntlMiddleware = createMiddleware({
-  locales,
-  defaultLocale,
-});
-
-export default function getMidleware(req: NextRequest): NextResponse {
-  return nextIntlMiddleware(req);
+export function defaultMiddleware() {
+  return NextResponse.next();
 }
-
-export const config = {
-  matcher: ["/", "/(ru|en)/:path*"],
-};
+export default withInternationalisation(defaultMiddleware);
