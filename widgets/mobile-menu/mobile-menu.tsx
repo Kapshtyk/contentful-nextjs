@@ -58,15 +58,14 @@ const MobileMenu = ({
       <Portal wrapperId="modal">
         <dialog
           ref={ref}
-          className="open:animate-menu-appear m-0 flex h-screen w-screen place-content-center bg-white/80 p-4 backdrop-blur-lg [&:modal]:max-h-full [&:modal]:max-w-full"
+          className="open:animate-menu-appear m-0 flex h-screen w-screen place-content-center bg-primary/80 p-4 backdrop-blur-lg [&:modal]:max-h-full [&:modal]:max-w-full"
           id="mobileMenu"
         >
           <form method="dialog">
             <button
               type="submit"
               tabIndex={0}
-              className="absolute right-3 top-4 text-primary"
-              onClick={() => ref?.current?.close()}
+              className="absolute right-3 top-4 text-white"
             >
               <PlusIcon className="rotate-45" size={32} />
               <span className="sr-only">Close menu</span>
@@ -81,7 +80,7 @@ const MobileMenu = ({
                 <li key={menu}>
                   <Link
                     className={clsx(
-                      "relative block px-4 py-2 text-3xl font-normal text-primary after:absolute after:-bottom-2 after:left-1/2 after:h-[8px] after:w-0 after:translate-x-[-50%] after:bg-primary after:transition-all after:duration-150 hover:after:w-full lg:text-2xl",
+                      "relative block px-4 py-2 text-3xl font-normal text-white after:absolute after:-bottom-2 after:left-1/2 after:h-[8px] after:w-0 after:translate-x-[-50%] after:bg-primary after:transition-all after:duration-150 hover:after:w-full lg:text-2xl",
                     )}
                     href={`#${menu?.split(" ").join("-").toLowerCase()}`}
                     onClick={() => ref?.current?.close()}
