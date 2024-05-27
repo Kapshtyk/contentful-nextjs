@@ -46,10 +46,10 @@ export default async function RootLayout({
               Draft mode enabled
             </div>
           )}
-          <Header menus={menus} />
           <Link href="#main-content" className="sr-only">
             Skip to main content
           </Link>
+          <Header menus={menus} />
           <div>
             <main
               id="main-content"
@@ -59,6 +59,7 @@ export default async function RootLayout({
             </main>
           </div>
           {/* <Footer /> */}
+          <div id="modal" />
         </body>
       </NextIntlClientProvider>
     </html>

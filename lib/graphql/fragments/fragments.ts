@@ -9,6 +9,9 @@ export const FRAGMENT_TECH = graphql(`
     backend {
       ...FragmentBackend
     }
+    testing {
+      ...FragmentTesting
+    }
   }
 `);
 

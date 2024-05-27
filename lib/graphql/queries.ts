@@ -64,12 +64,7 @@ export const GET_MENU = graphql(`
   query getMenu {
     menuCollection(limit: 1) {
       items {
-        menuLinksCollection {
-          items {
-            slug
-            title
-          }
-        }
+        menuLinks
       }
     }
   }

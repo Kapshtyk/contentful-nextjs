@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unnecessary-type-assertion */
 "use client";
 
 import { useTranslations } from "next-intl";
@@ -15,7 +16,11 @@ function useMenuAnimation() {
 
   useEffect(() => {
     inView("li", ({ target }) => {
-      void animate(target, { x: [900, 0] }, { type: "tween", duration: 0.6 });
+      void animate(
+        target,
+        { x: [300, 0], opacity: [0, 1] },
+        { type: "tween", duration: 0.3 },
+      );
     });
   }, [animate]);
 
@@ -25,12 +30,13 @@ function useMenuAnimation() {
 export const Technologies = ({
   frontend,
   backend,
+  testing,
   title,
 }: NonNullable<TechnologiesType>) => {
   const t = useTranslations();
   const scope = useMenuAnimation();
 
-  const filteredTechnologies = [frontend, backend].filter(Boolean);
+  const filteredTechnologies = [frontend, backend, testing].filter(Boolean);
 
   return (
     <>
@@ -39,7 +45,7 @@ export const Technologies = ({
       </Heading>
       <div ref={scope} className="relative flex flex-col gap-12">
         <Arrow className="absolute -top-6 right-0 hidden h-24 w-24 -rotate-90 text-white  sm:block" />
-        <Logo className="absolute bottom-0 left-0 hidden w-3/12 text-white md:block" />
+        <Logo className="absolute bottom-0 left-0 hidden w-2/12 text-white md:block" />
         {filteredTechnologies.length > 0 &&
           filteredTechnologies.map((technology) => {
             return (

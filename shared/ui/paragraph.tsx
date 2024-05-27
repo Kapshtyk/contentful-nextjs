@@ -22,7 +22,7 @@ export const Paragraph = ({
         opacity: 1,
         x: 0,
       }}
-      transition={{ duration: 0.5, delay: 0.4 }}
+      transition={{ duration: 0.5, delay: 0.6 }}
       className={clsx(
         "group:inline mb-2 group-[.list-inside]:inline",
         className,

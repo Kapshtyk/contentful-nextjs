@@ -1,5 +1,6 @@
 "use client";
 import clsx from "clsx";
+import { motion } from "framer-motion";
 
 import ContentfulImage from "@/lib/contentful-image";
 import { Frontpage } from "@/lib/graphql/generate/graphql";
@@ -28,12 +29,34 @@ export function HeroBanner({ hero }: HeroBannerProps) {
       <Corner className="absolute hidden h-32 w-32 -rotate-90 text-primary md:bottom-8 md:right-4 md:block lg:right-8" />
       <Arrow className="absolute hidden h-32 w-32 text-primary-foreground md:bottom-8 md:left-16 md:block lg:left-24" />
       <div className="relative md:w-[65%] md:pl-8 md:pr-[5%] lg:pr-[15%]">
-        <div className="flex min-h-[300px] flex-col justify-evenly md:min-h-[460px] md:pl-8 lg:pl-16">
+        <div className="flex min-h-[350px] flex-col justify-evenly gap-4 md:min-h-[550px] md:pl-8 lg:pl-16">
           <Heading
             level={1}
-            className="text-6xl font-black leading-none text-primary-foreground"
+            className="contents text-5xl font-bold leading-none text-primary-foreground"
           >
-            {hero.slogan}
+            <motion.span
+              initial={{ opacity: 0, x: -10 }}
+              viewport={{ once: true }}
+              whileInView={{
+                opacity: 1,
+                x: 0,
+              }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="font-extralight"
+            >
+              {hero.title}
+            </motion.span>
+            <motion.span
+              initial={{ opacity: 0, x: -10 }}
+              viewport={{ once: true }}
+              whileInView={{
+                opacity: 1,
+                x: 0,
+              }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+            >
+              {hero.slogan}
+            </motion.span>
           </Heading>
           <Paragraph className="text-background">{hero.description}</Paragraph>
         </div>

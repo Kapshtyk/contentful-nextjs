@@ -28,8 +28,8 @@ export function Frontpage({ frontpage }: FrontpageProps) {
           <Technologies {...frontpage.tech} />
         </Section>
       )}
-      <Section data-style="inversed" id="highlighted-posts">
-        {frontpage.highlightedPostsCollection && (
+      {frontpage.highlightedPostsCollection && (
+        <Section data-style="inversed" id="my-projects">
           <div className="container p-8">
             <div className="block p-6 sm:hidden">
               <CardsCarousel
@@ -48,8 +48,8 @@ export function Frontpage({ frontpage }: FrontpageProps) {
               })}
             </div>
           </div>
-        )}
-      </Section>
+        </Section>
+      )}
     </>
   );
 }
