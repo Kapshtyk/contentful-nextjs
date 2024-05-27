@@ -50,27 +50,27 @@ export function Markdown({
   return documentToReactComponents(document, {
     renderNode: {
       [BLOCKS.HEADING_1]: (_node, children) => (
-        <Heading inversed={inversed} level={1}>
+        <Heading inversed={inversed} level={1} className={className}>
           {children}
         </Heading>
       ),
       [BLOCKS.HEADING_2]: (_node, children) => (
-        <Heading inversed={inversed} level={2}>
+        <Heading inversed={inversed} level={2} className={className}>
           {children}
         </Heading>
       ),
       [BLOCKS.HEADING_3]: (_node, children) => (
-        <Heading inversed={inversed} level={3}>
+        <Heading inversed={inversed} level={3} className={className}>
           {children}
         </Heading>
       ),
       [BLOCKS.HEADING_4]: (_node, children) => (
-        <Heading inversed={inversed} level={4}>
+        <Heading inversed={inversed} level={4} className={className}>
           {children}
         </Heading>
       ),
       [BLOCKS.HEADING_5]: (_node, children) => (
-        <Heading inversed={inversed} level={5}>
+        <Heading inversed={inversed} level={5} className={className}>
           {children}
         </Heading>
       ),

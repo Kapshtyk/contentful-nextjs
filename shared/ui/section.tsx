@@ -17,7 +17,7 @@ export const Section = ({
       {...props}
       className={clsx("section data-[style=inversed]:bg-primary", className)}
     >
-      <div className="container min-h-screen ">{children}</div>
+      <div className="container">{children}</div>
     </section>
   );
 };

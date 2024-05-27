@@ -172,6 +172,14 @@ export const FRAGMENT_FRONTPAGE = graphql(`
     }
     description {
       json
+      links {
+        assets {
+          block {
+            ...FragmentAsset
+          }
+        
+        }
+      }
     }
     tech {
       ...FragmentTech

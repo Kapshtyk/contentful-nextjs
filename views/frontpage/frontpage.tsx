@@ -2,10 +2,10 @@ import {
   Frontpage as FrontpageType,
   Post,
 } from "@/lib/graphql/generate/graphql";
-import { Markdown } from "@/lib/markdown";
 
 import { CardsCarousel } from "@/entities/carousel/carousel";
 import { Section } from "@/shared/ui/section";
+import { AboutMe } from "@/widgets/about-me/about-me";
 import { Card } from "@/widgets/card/card";
 import { HeroBanner } from "@/widgets/hero-banner/hero-banner";
 import { Technologies } from "@/widgets/technologies";
@@ -18,20 +18,17 @@ export function Frontpage({ frontpage }: FrontpageProps) {
   return (
     <>
       <HeroBanner hero={frontpage.hero} />
-      {frontpage?.description?.json.content && (
+      {frontpage?.description && (
         <Section id="about-me">
-          <Markdown
-            document={frontpage.description.json}
-            links={frontpage.description.links}
-          />
+          <AboutMe {...frontpage.description} />
         </Section>
       )}
       {frontpage.tech && (
-        <Section id="technologies" data-style="inversed">
+        <Section data-style="inversed" id="technologies">
           <Technologies {...frontpage.tech} />
         </Section>
       )}
-      <section className="section w-[100vw] bg-slate-800">
+      <Section data-style="inversed" id="highlighted-posts">
         {frontpage.highlightedPostsCollection && (
           <div className="container p-8">
             <div className="block p-6 sm:hidden">
@@ -41,7 +38,7 @@ export function Frontpage({ frontpage }: FrontpageProps) {
                 )}
               />
             </div>
-            <div className="hidden grid-cols-1 items-start gap-4 sm:grid sm:grid-cols-2 lg:grid-cols-3">
+            <div className="hidden grid-cols-1 items-start gap-4 sm:grid lg:grid-cols-3">
               {frontpage.highlightedPostsCollection.items.map((post) => {
                 if (!post) {
                   return null;
@@ -52,7 +49,7 @@ export function Frontpage({ frontpage }: FrontpageProps) {
             </div>
           </div>
         )}
-      </section>
+      </Section>
     </>
   );
 }

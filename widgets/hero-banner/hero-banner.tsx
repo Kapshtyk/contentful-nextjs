@@ -37,19 +37,6 @@ export function HeroBanner({ hero }: HeroBannerProps) {
           </Heading>
           <Paragraph className="text-background">{hero.description}</Paragraph>
         </div>
-        {/* <motion.div
-            className="mt-4 flex gap-4"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 4, duration: 1 }}
-          >
-            <Button variant="default" size="lg" asChild>
-              <Link href={hero.primaryLink || "/"}>Get started</Link>
-            </Button>
-            <Button variant="secondary" size="lg" asChild>
-              <Link href={hero.secondaryLink || "/"}>Get started</Link>
-            </Button>
-          </motion.div> */}
       </div>
       <div
         className={clsx(

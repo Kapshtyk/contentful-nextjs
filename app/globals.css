@@ -81,7 +81,6 @@
   .section {
     padding-block: theme(spacing.14);
     scroll-snap-align: start;
-    min-width: 100vw;
     z-index: -20;
     
     @screen lg {
@@ -109,6 +108,7 @@
     font-size: theme(fontSize.4xl);
     margin-bottom: 0.5em;
     font-weight: theme(fontWeight.extrabold);
+    order: -3;
 
     @screen lg {
       font-size: theme(fontSize.5xl);

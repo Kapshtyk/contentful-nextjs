@@ -53,7 +53,7 @@ export default async function RootLayout({
           <div>
             <main
               id="main-content"
-              className="flex h-screen flex-col items-center overflow-x-hidden overflow-y-scroll "
+              className="h-screen overflow-x-hidden overflow-y-scroll "
             >
               {children}
             </main>
