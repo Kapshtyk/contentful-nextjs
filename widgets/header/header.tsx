@@ -2,6 +2,7 @@
 
 import dynamic from "next/dynamic";
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
 import clsx from "clsx";
 
@@ -19,6 +20,7 @@ interface HeaderProps {
 
 export const Header = ({ menus }: HeaderProps) => {
   const [scrollPosition, setScrollPosition] = useState(0);
+  const t = useTranslations();
 
   useEffect(() => {
     const mainContent = document.getElementById("main-content");
@@ -70,22 +72,25 @@ export const Header = ({ menus }: HeaderProps) => {
         </Link>
         <ul className="hidden justify-end gap-4 transition-all duration-75 sm:flex">
           {menus?.menuLinks &&
-            menus.menuLinks.map((menu) => (
-              <li key={menu}>
-                <Link
-                  className={clsx(
-                    "relative block px-4 py-2 text-xl font-normal after:absolute after:-bottom-2 after:left-1/2 after:h-[8px] after:w-0 after:translate-x-[-50%] after:bg-primary after:transition-all after:duration-150 hover:after:w-full lg:text-2xl",
-                    {
-                      ["text-white"]: scrollPosition <= 100,
-                      ["text-primary"]: scrollPosition > 100,
-                    },
-                  )}
-                  href={`#${menu?.split(" ").join("-").toLowerCase()}`}
-                >
-                  {menu}
-                </Link>
-              </li>
-            ))}
+            menus.menuLinks.map(
+              (menu) =>
+                menu !== "/" && (
+                  <li key={menu}>
+                    <Link
+                      className={clsx(
+                        "relative block px-4 py-2 text-xl font-normal after:absolute after:-bottom-2 after:left-1/2 after:h-[8px] after:w-0 after:translate-x-[-50%] after:bg-primary after:transition-all after:duration-150 hover:after:w-full lg:text-2xl",
+                        {
+                          ["text-white"]: scrollPosition <= 100,
+                          ["text-primary"]: scrollPosition > 100,
+                        },
+                      )}
+                      href={`/#${menu?.split(" ").join("-").toLowerCase()}`}
+                    >
+                      {t(menu as keyof IntlMessages)}
+                    </Link>
+                  </li>
+                ),
+            )}
         </ul>
         {menus.menuLinks && (
           <MobileMenu

@@ -19,17 +19,17 @@ export function Frontpage({ frontpage }: FrontpageProps) {
     <>
       <HeroBanner hero={frontpage.hero} />
       {frontpage?.description && (
-        <Section id="about-me">
+        <Section id="about">
           <AboutMe {...frontpage.description} />
         </Section>
       )}
       {frontpage.tech && (
-        <Section data-style="inversed" id="technologies">
+        <Section data-style="inversed" id="tech">
           <Technologies {...frontpage.tech} />
         </Section>
       )}
       {frontpage.highlightedPostsCollection && (
-        <Section data-style="inversed" id="my-projects">
+        <Section data-style="inversed" id="projects">
           <div className="container p-8">
             <div className="block p-6 sm:hidden">
               <CardsCarousel

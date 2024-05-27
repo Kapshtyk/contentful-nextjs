@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 import { createRef, useEffect } from "react";
 import clsx from "clsx";
 import { stagger, useAnimate } from "framer-motion";
@@ -31,8 +32,8 @@ const MobileMenu = ({
           filter: ["blur(20px)", "blur(0px)"],
         },
         {
-          duration: 0.4,
-          delay: stagger(0.3, { startDelay: 0.7 }),
+          duration: 0.7,
+          delay: stagger(0.3, { startDelay: 1.5 }),
         },
       );
     }, [animate]);
@@ -40,6 +41,7 @@ const MobileMenu = ({
     return scope;
   }
   const scope = useMenuAnimation();
+  const t = useTranslations();
 
   return (
     <>
@@ -58,7 +60,7 @@ const MobileMenu = ({
       <Portal wrapperId="modal">
         <dialog
           ref={ref}
-          className="open:animate-menu-appear m-0 flex h-screen w-screen place-content-center bg-primary/80 p-4 backdrop-blur-lg [&:modal]:max-h-full [&:modal]:max-w-full"
+          className="open:animate-menu-appear m-0 flex h-screen w-screen place-content-center bg-primary p-4 [&:modal]:max-h-full [&:modal]:max-w-full"
           id="mobileMenu"
         >
           <form method="dialog">
@@ -82,10 +84,10 @@ const MobileMenu = ({
                     className={clsx(
                       "relative block px-4 py-2 text-3xl font-normal text-white after:absolute after:-bottom-2 after:left-1/2 after:h-[8px] after:w-0 after:translate-x-[-50%] after:bg-primary after:transition-all after:duration-150 hover:after:w-full lg:text-2xl",
                     )}
-                    href={`#${menu?.split(" ").join("-").toLowerCase()}`}
+                    href={`/${menu === "/" ? "" : "#" + menu?.split(" ").join("-").toLowerCase()}`}
                     onClick={() => ref?.current?.close()}
                   >
-                    {menu}
+                    {t(menu as keyof IntlMessages)}
                   </Link>
                 </li>
               ))}

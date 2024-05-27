@@ -12,5 +12,9 @@
   "unitTesting": "Unit testing",
   "endToEndTesting": "End-to-End testing",
   "apiTesting": "API testing",
-  "databases": "Databases"
+  "databases": "Databases",
+  "/": "Homepage",
+  "about": "About",
+  "tech": "Tech stack",
+  "projects": "Projects"
 }
