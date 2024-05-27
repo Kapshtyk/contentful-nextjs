@@ -17,47 +17,7 @@ interface HeaderProps {
 
 export const Header = ({ menus }: HeaderProps) => {
   const [scrollPosition, setScrollPosition] = useState(0);
-  const [isInversed, setIsInversed] = useState(false);
   const pathname = usePathname();
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          const isIntersecting = entry.isIntersecting;
-          const intersectionRatio = entry.intersectionRatio;
-          const boundingClientRectY = entry.boundingClientRect.y;
-          const isTargetInversed =
-            (entry.target as HTMLElement).dataset.style === "inversed";
-
-          if (isIntersecting && intersectionRatio && isTargetInversed) {
-            const isMovingUpwards = boundingClientRectY < 0;
-            const isMovingDownwards = boundingClientRectY > 0;
-            const isIntersectingEnough = intersectionRatio > 0.15;
-            const isStrongIntersection = intersectionRatio > 0.55;
-
-            if (
-              (isMovingUpwards && isIntersectingEnough) ||
-              (isMovingDownwards && isStrongIntersection) ||
-              (isIntersectingEnough && isInversed)
-            ) {
-              setIsInversed(true);
-            } else {
-              setIsInversed(false);
-            }
-          } else if (!isIntersecting) {
-            setIsInversed(false);
-          }
-        });
-      },
-      {
-        threshold: [0, 0.2, 0.8, 1],
-      },
-    );
-    document.querySelectorAll("section").forEach((section) => {
-      observer.observe(section);
-    });
-  }, [isInversed]);
 
   useEffect(() => {
     const mainContent = document.getElementById("main-content");
@@ -95,7 +55,6 @@ export const Header = ({ menus }: HeaderProps) => {
             "transition-colors duration-150 group-data-[status=hidden]:after:content-[''] lg:text-5xl",
             {
               ["text-primary"]: scrollPosition > 75,
-              ["text-white"]: isInversed,
             },
             cookie.className,
           )}

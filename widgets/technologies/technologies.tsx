@@ -2,7 +2,7 @@
 
 import { useTranslations } from "next-intl";
 import { useEffect } from "react";
-import { inView, stagger, useAnimate } from "framer-motion";
+import { inView, useAnimate } from "framer-motion";
 
 import { Technologies as TechnologiesType } from "@/lib/graphql/generate/graphql";
 
@@ -15,11 +15,7 @@ function useMenuAnimation() {
 
   useEffect(() => {
     inView("li", ({ target }) => {
-      void animate(
-        target,
-        { x: [900, 0] },
-        { type: "spring", duration: 0.6, delay: stagger(0.6) },
-      );
+      void animate(target, { x: [900, 0] }, { type: "tween", duration: 0.6 });
     });
   }, [animate]);
 
@@ -43,17 +39,17 @@ export const Technologies = ({
       </Heading>
       <div ref={scope} className="relative flex flex-col gap-12">
         <Arrow className="absolute -top-6 right-0 hidden h-24 w-24 -rotate-90 text-white  sm:block" />
+        <Logo className="absolute bottom-0 left-0 hidden w-3/12 text-white md:block" />
         {filteredTechnologies.length > 0 &&
           filteredTechnologies.map((technology) => {
             return (
               technology && (
                 <div
-                  className="flex flex-col sm:flex-row sm:gap-8"
+                  className="flex flex-col sm:flex-row sm:gap-12"
                   key={technology?.title}
                 >
                   <Heading inversed className="relative mb-0 w-3/12" level={3}>
                     {t(technology?.title as keyof IntlMessages)}
-                    <Logo className="absolute bottom-0 left-0 hidden w-full opacity-50 md:block" />
                   </Heading>
                   <div className="flex flex-col gap-4 md:w-9/12">
                     {Object.keys(technology)
