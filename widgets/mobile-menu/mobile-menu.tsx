@@ -83,20 +83,20 @@ export const MobileMenu = ({
         >
           <MenuIcon
             className={clsx("transition-all duration-150", className)}
-            size={24}
+            size={32}
             aria-hidden="true"
           />
           <span className="sr-only">Open navigation menu</span>
         </button>
-        <div className="absolute left-0 top-0 hidden h-dvh w-full flex-col justify-between bg-white p-4 peer-aria-expanded:flex">
+        <div className="absolute left-0 top-0 hidden h-dvh w-full flex-col justify-between bg-primary p-4 peer-aria-expanded:flex">
           <button
-            className="-mr-1 self-end text-primary"
+            className="-mr-1 -mt-1 self-end text-white"
             onClick={() => setIsOpen(false)}
             aria-expanded={isOpen}
           >
             <PlusIcon
               className="rotate-45 transition-all duration-150"
-              size={32}
+              size={40}
               aria-hidden="true"
             />
             <span className="sr-only">Close navigation menu</span>
@@ -107,7 +107,7 @@ export const MobileMenu = ({
                 <li key={menu}>
                   <Link
                     className={clsx(
-                      "relative block px-4 py-2 text-3xl font-normal text-primary after:absolute after:-bottom-2 after:left-1/2 after:h-[8px] after:w-0 after:translate-x-[-50%] after:bg-primary after:transition-all after:duration-150 hover:after:w-full lg:text-2xl",
+                      "relative block px-4 py-2 text-3xl font-normal text-white after:absolute after:-bottom-2 after:left-1/2 after:h-[8px] after:w-0 after:translate-x-[-50%] after:bg-primary after:transition-all after:duration-150 hover:after:w-full lg:text-2xl",
                     )}
                     href={`/${menu === "/" ? "" : "#" + menu?.split(" ").join("-").toLowerCase()}`}
                     onClick={() => setIsOpen(false)}
