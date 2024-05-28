@@ -83,7 +83,7 @@ export const SocialLinks = ({
                   "@xs:border-2 @xs:border-primary-foreground @xs:text-primary-foreground @xs:shadow-[-4px_4px_0px_0px] @xs:shadow-primary-foreground",
                   "flex h-auto w-auto items-center justify-start bg-transparent @xs:h-12 @xs:w-12 @xs:justify-center @xs:bg-white",
                   "[&_a]:flex [&_a]:w-full [&_a]:items-center [&_a]:gap-6 [&_a]:p-2 @xs:[&_a]:justify-center",
-                  "[&_a>span]:not-sr-only [&_a>span]:text-lg @xs:[&_a>span]:sr-only",
+                  "[&_a>span]:not-sr-only @xs:[&_a>span]:sr-only",
                   "[&_a>svg]:h-8 [&_a>svg]:w-8 @xs:[&_a>svg]:h-[24px] @xs:[&_a>svg]:w-[24px]",
                   "transition-all duration-150 hover:bg-primary hover:text-white",
                   {

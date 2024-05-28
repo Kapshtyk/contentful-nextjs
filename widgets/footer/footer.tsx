@@ -19,7 +19,7 @@ export const Footer = () => {
           <div className="">
             <SocialLinks variant="dark" />
           </div>
-          <Logo className="absolute bottom-4 right-4 w-[120px] md:w-[200px]" />
+          <Logo className="absolute bottom-4 right-4 hidden w-[120px] sm:block md:w-[200px]" />
         </div>
       </Section>
       <p className="text-center font-thin">

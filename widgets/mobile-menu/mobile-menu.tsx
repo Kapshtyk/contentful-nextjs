@@ -19,6 +19,17 @@ function useMenuAnimation(isOpen: boolean) {
 
   useEffect(() => {
     void animate(
+      ".plus",
+      {
+        rotate: isOpen ? 45 : -270,
+      },
+      {
+        type: "spring",
+        bounce: 0,
+        duration: 0.5,
+      },
+    );
+    void animate(
       "ul",
       {
         clipPath: isOpen ? "inset(0% 0% 0% 0%)" : "inset(10% 50% 90% 50%)",
@@ -95,7 +106,7 @@ export const MobileMenu = ({
             aria-expanded={isOpen}
           >
             <PlusIcon
-              className="rotate-45 transition-all duration-150"
+              className="plus transition-all duration-150"
               size={40}
               aria-hidden="true"
             />

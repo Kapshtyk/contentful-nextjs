@@ -20,9 +20,9 @@
   "homepage": "Homepage",
   "footer-slogan": "Let's build something great together!",
   "footer-end": "Helsinki, {year}",
-  "Github": "GitHub",
-  "LinkedIn": "LinkedIn",
-  "Email": "Email",
-  "Phone": "Phone number",
-  "Telegram": "Telegram"
+  "Github": "Check out my GitHub",
+  "LinkedIn": "Visit my LinkedIn",
+  "Email": "Send me an email",
+  "Phone": "Call me",
+  "Telegram": "Find me on Telegram"
 }
