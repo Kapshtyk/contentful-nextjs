@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import clsx from "clsx";
 
-import { getMenu } from "@/lib/api/menu";
+import { Menu } from "@/lib/graphql/generate/graphql";
 
 import Logo from "@/shared/icons/logo.svg";
 
@@ -17,7 +17,7 @@ const MobileMenu = dynamic(() => import("../mobile-menu/mobile-menu"), {
 
 export const Header = () => {
   const [scrollPosition, setScrollPosition] = useState(0);
-  const { data: menus } = useQuery({ queryKey: ["menu"], queryFn: getMenu });
+  const { data: menus } = useQuery<Menu>({ queryKey: ["menu"] });
   const t = useTranslations();
 
   useEffect(() => {

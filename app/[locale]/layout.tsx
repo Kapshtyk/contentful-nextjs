@@ -44,16 +44,20 @@ export default async function RootLayout({
   unstable_setRequestLocale(locale);
   const { isEnabled } = draftMode();
   const messages = await getMessages({ locale });
+  const menu = await getMenu();
+  const contacts = await getContacts();
   const queryClient = new QueryClient();
 
   await queryClient.prefetchQuery({
     queryKey: ["menu"],
     queryFn: getMenu,
+    initialData: menu,
   });
 
   await queryClient.prefetchQuery({
     queryKey: ["contacts"],
     queryFn: getContacts,
+    initialData: contacts,
   });
 
   return (
