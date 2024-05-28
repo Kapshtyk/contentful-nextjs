@@ -6,12 +6,12 @@ import { GithubIcon, LinkedinIcon, MailIcon, PhoneIcon } from "lucide-react";
 
 import { Contact, ContactDetails } from "@/lib/graphql/generate/graphql";
 
+import TelegramIcon from "@/shared/icons/telegram.svg";
+
 export const SocialLinks = () => {
   const { data: contacts } = useQuery<ContactDetails>({
     queryKey: ["contacts"],
   });
-
-  console.log(contacts);
 
   if (!contacts?.contactCollection?.items?.length) {
     return null;
@@ -47,6 +47,12 @@ export const SocialLinks = () => {
         return (
           <Link key={contact.title} href={contact.value}>
             <GithubIcon size={24} />
+          </Link>
+        );
+      case "telegram":
+        return (
+          <Link key={contact.title} href={contact.value}>
+            <TelegramIcon className="h-[24px] w-[24px]" />
           </Link>
         );
       default:

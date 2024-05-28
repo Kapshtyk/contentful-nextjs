@@ -56,6 +56,15 @@ const MobileMenu = ({
   const scope = useMenuAnimation(isOpen);
   const t = useTranslations();
 
+  useEffect(() => {
+    const el = document.scrollingElement as HTMLElement;
+    if (isOpen && el) {
+      el.style.overflow = "hidden";
+    } else {
+      el.style.overflow = "auto";
+    }
+  }, [isOpen]);
+
   return (
     <FocusTrap active={isOpen}>
       <div
@@ -79,9 +88,9 @@ const MobileMenu = ({
           />
           <span className="sr-only">Open navigation menu</span>
         </button>
-        <div className="absolute left-0 top-0 hidden h-screen w-full flex-col justify-between bg-white p-4 peer-aria-expanded:flex">
+        <div className="absolute left-0 top-0 hidden h-dvh w-full flex-col justify-between bg-white p-4 peer-aria-expanded:flex">
           <button
-            className="self-end text-primary"
+            className="-mr-1 self-end text-primary"
             onClick={() => setIsOpen(false)}
             aria-expanded={isOpen}
           >
