@@ -15,7 +15,10 @@ export const Section = ({
     <section
       data-style={inversed ? "inversed" : "default"}
       {...props}
-      className={clsx("section data-[style=inversed]:bg-primary", className)}
+      className={clsx(
+        "section z-40 data-[style=inversed]:bg-primary",
+        className,
+      )}
     >
       <div className="container">{children}</div>
     </section>

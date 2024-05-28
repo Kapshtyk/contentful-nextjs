@@ -5,9 +5,9 @@ import {
 
 import { CardsCarousel } from "@/entities/carousel/carousel";
 import { Section } from "@/shared/ui/section";
-import { AboutMe } from "@/widgets/about-me/about-me";
-import { Card } from "@/widgets/card/card";
-import { HeroBanner } from "@/widgets/hero-banner/hero-banner";
+import { AboutMe } from "@/widgets/about-me";
+import { Card } from "@/widgets/card";
+import { HeroBanner } from "@/widgets/hero-banner";
 import { Technologies } from "@/widgets/technologies";
 
 interface FrontpageProps {

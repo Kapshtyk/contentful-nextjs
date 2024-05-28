@@ -17,5 +17,12 @@
   "about": "About",
   "tech": "Tech stack",
   "projects": "Projects",
-  "homepage": "Homepage"
+  "homepage": "Homepage",
+  "footer-slogan": "Let's build something great together!",
+  "footer-end": "Helsinki, {year}",
+  "Github": "GitHub",
+  "LinkedIn": "LinkedIn",
+  "Email": "Email",
+  "Phone": "Phone number",
+  "Telegram": "Telegram"
 }

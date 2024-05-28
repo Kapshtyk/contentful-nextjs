@@ -45,7 +45,7 @@ function useMenuAnimation(isOpen: boolean) {
   return scope;
 }
 
-const MobileMenu = ({
+export const MobileMenu = ({
   className,
   menus,
 }: {
@@ -123,5 +123,3 @@ const MobileMenu = ({
     </FocusTrap>
   );
 };
-
-export default MobileMenu;

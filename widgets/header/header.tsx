@@ -1,6 +1,5 @@
 "use client";
 
-import dynamic from "next/dynamic";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
@@ -10,10 +9,7 @@ import clsx from "clsx";
 import { Menu } from "@/lib/graphql/generate/graphql";
 
 import Logo from "@/shared/icons/logo.svg";
-
-const MobileMenu = dynamic(() => import("../mobile-menu/mobile-menu"), {
-  ssr: false,
-});
+import { MobileMenu } from "@/widgets/mobile-menu";
 
 export const Header = () => {
   const [scrollPosition, setScrollPosition] = useState(0);
@@ -21,19 +17,14 @@ export const Header = () => {
   const t = useTranslations();
 
   useEffect(() => {
-    const mainContent = document.getElementById("main-content");
-
     const handleScroll = () => {
-      if (!mainContent) {
-        return;
-      }
-      setScrollPosition(mainContent.scrollTop);
+      setScrollPosition(window.scrollY);
     };
 
-    mainContent?.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll);
 
     return () => {
-      mainContent?.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
@@ -44,7 +35,7 @@ export const Header = () => {
   return (
     <header
       className={clsx(
-        "group fixed z-50 flex h-16 w-full items-center justify-between px-4 transition-all duration-150",
+        "group fixed left-0 right-0 z-50 flex h-16 items-center justify-between px-4 transition-all duration-150",
         {
           ["bg-transparent"]: scrollPosition <= 100,
           ["bg-white/80 shadow-[inset_0px_-1px_0px_0px] shadow-slate-200 backdrop-blur-md"]:

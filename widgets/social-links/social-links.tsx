@@ -1,31 +1,39 @@
 "use client";
 
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 import { useQuery } from "@tanstack/react-query";
+import clsx from "clsx";
 import { GithubIcon, LinkedinIcon, MailIcon, PhoneIcon } from "lucide-react";
 
 import { Contact, ContactDetails } from "@/lib/graphql/generate/graphql";
 
 import TelegramIcon from "@/shared/icons/telegram.svg";
 
-export const SocialLinks = () => {
+export const SocialLinks = ({
+  variant = "light",
+}: {
+  variant: "dark" | "light";
+}) => {
   const { data: contacts } = useQuery<ContactDetails>({
     queryKey: ["contacts"],
   });
+  const t = useTranslations();
 
   if (!contacts?.contactCollection?.items?.length) {
     return null;
   }
 
   const getContact = (contact: Contact) => {
-    if (!contact.value) {
+    if (!contact.value || !contact.title) {
       return null;
     }
     switch (contact.type) {
       case "email":
         return (
           <Link key={contact.title} href={`mailto:${contact.value}`}>
-            <MailIcon size={24} />
+            <MailIcon aria-hidden />
+            <span>{t(contact.title as keyof IntlMessages)}</span>
           </Link>
         );
       case "tel":
@@ -34,25 +42,29 @@ export const SocialLinks = () => {
             key={contact.title}
             href={`tel:${contact.value.split(" ").join("")}`}
           >
-            <PhoneIcon size={24} />
+            <PhoneIcon aria-hidden />
+            <span>{t(contact.title as keyof IntlMessages)}</span>
           </Link>
         );
       case "linkedin":
         return (
           <Link key={contact.title} href={contact.value}>
-            <LinkedinIcon size={24} />
+            <LinkedinIcon aria-hidden />
+            <span>{t(contact.title as keyof IntlMessages)}</span>
           </Link>
         );
       case "github":
         return (
           <Link key={contact.title} href={contact.value}>
-            <GithubIcon size={24} />
+            <GithubIcon aria-hidden />
+            <span>{t(contact.title as keyof IntlMessages)}</span>
           </Link>
         );
       case "telegram":
         return (
           <Link key={contact.title} href={contact.value}>
-            <TelegramIcon className="h-[24px] w-[24px]" />
+            <TelegramIcon aria-hidden />
+            <span>{t(contact.title as keyof IntlMessages)}</span>
           </Link>
         );
       default:
@@ -62,12 +74,22 @@ export const SocialLinks = () => {
 
   return (
     <div className="@container">
-      <ul className="flex w-full justify-between gap-4">
+      <ul className="flex w-full flex-col justify-between gap-1 @xs:flex-row">
         {contacts.contactCollection.items.map((contact) => {
           if (contact && contact.value) {
             return (
               <li
-                className="flex h-12 w-12 flex-wrap items-center justify-center rounded-full bg-primary text-white"
+                className={clsx(
+                  "flex h-auto w-auto items-center justify-start rounded-none @xs:h-12 @xs:w-12 @xs:justify-center @xs:rounded-full",
+                  "[&_a]:flex [&_a]:w-full [&_a]:items-center [&_a]:gap-6 [&_a]:p-2 @xs:[&_a]:justify-center",
+                  "[&_a>span]:not-sr-only [&_a>span]:text-lg @xs:[&_a>span]:sr-only",
+                  "[&_a>svg]:h-8 [&_a>svg]:w-8 @xs:[&_a>svg]:h-[24px] @xs:[&_a>svg]:w-[24px]",
+                  "transition-all duration-150 hover:bg-primary hover:text-white",
+                  {
+                    ["bg-transparent text-background"]: variant === "dark",
+                    ["bg-primary text-white"]: variant === "light",
+                  },
+                )}
                 key={contact.value}
               >
                 {getContact(contact)}

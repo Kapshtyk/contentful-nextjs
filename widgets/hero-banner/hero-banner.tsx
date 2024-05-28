@@ -23,7 +23,7 @@ export function HeroBanner({ hero }: HeroBannerProps) {
     <section
       className={clsx(
         "section relative flex flex-col items-center bg-gradient-to-b from-primary from-70% to-primary-foreground",
-        "min-h-screen to-70% px-4 pt-20 md:flex-row md:bg-gradient-to-r md:px-0 md:pt-20 lg:from-65% lg:to-65%",
+        "min-h-dvh to-70% px-4 pt-20 md:flex-row md:bg-gradient-to-r md:px-0 md:pt-20 lg:from-65% lg:to-65%",
       )}
     >
       <Corner

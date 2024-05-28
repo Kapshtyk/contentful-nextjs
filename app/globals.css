@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
 
 @layer base {
   :root {
@@ -49,7 +48,6 @@
     --input: 215 27.9% 16.9%;
     --ring: 263.4 70% 50.4%;
   }
-}
   * {
     @apply ring-offset-transparent focus-visible:outline-none focus-visible:ring-offset-ring focus-visible:ring focus-visible:ring-ring focus-visible:ring-offset-2 scroll-smooth;
   }

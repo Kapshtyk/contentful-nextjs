@@ -19,6 +19,7 @@ import Providers from "./providers";
 
 import { roboto } from "@/app/fonts";
 import { locales } from "@/i18n";
+import { Footer } from "@/widgets/footer";
 import { Header } from "@/widgets/header/header";
 
 export function generateStaticParams() {
@@ -75,13 +76,10 @@ export default async function RootLayout({
           <Providers>
             <HydrationBoundary state={dehydrate(queryClient)}>
               <Header />
-              <main
-                id="main-content"
-                className="h-screen overflow-x-hidden overflow-y-scroll "
-              >
+              <main id="main-content" className="overflow-x-hidden">
                 {children}
               </main>
-              {/* <Footer /> */}
+              <Footer />
             </HydrationBoundary>
           </Providers>
         </body>
