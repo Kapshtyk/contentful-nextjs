@@ -4,9 +4,10 @@ import dynamic from "next/dynamic";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
+import { useQuery } from "@tanstack/react-query";
 import clsx from "clsx";
 
-import { Menu } from "@/lib/graphql/generate/graphql";
+import { getMenu } from "@/lib/api/menu";
 
 import Logo from "@/shared/icons/logo.svg";
 
@@ -14,12 +15,9 @@ const MobileMenu = dynamic(() => import("../mobile-menu/mobile-menu"), {
   ssr: false,
 });
 
-interface HeaderProps {
-  menus: Menu;
-}
-
-export const Header = ({ menus }: HeaderProps) => {
+export const Header = () => {
   const [scrollPosition, setScrollPosition] = useState(0);
+  const { data: menus } = useQuery({ queryKey: ["menu"], queryFn: getMenu });
   const t = useTranslations();
 
   useEffect(() => {
@@ -46,7 +44,7 @@ export const Header = ({ menus }: HeaderProps) => {
   return (
     <header
       className={clsx(
-        "group fixed z-50 flex h-16 w-full items-center px-4 transition-all duration-150",
+        "group fixed z-50 flex h-16 w-full items-center justify-between px-4 transition-all duration-150",
         {
           ["bg-transparent"]: scrollPosition <= 100,
           ["bg-white/80 shadow-[inset_0px_-1px_0px_0px] shadow-slate-200 backdrop-blur-md"]:
@@ -54,22 +52,22 @@ export const Header = ({ menus }: HeaderProps) => {
         },
       )}
     >
-      <nav className="flex w-full items-center justify-between">
-        <Link
-          id="logo"
-          href="/"
-          aria-label="Arseniiy Kapshtyk's portfolio - Home"
-          className={clsx(
-            "relative flex items-center text-4xl",
-            "transition-all duration-150",
-            {
-              ["text-background"]: scrollPosition <= 100,
-              ["text-primary"]: scrollPosition > 100,
-            },
-          )}
-        >
-          <Logo className="mr-4 w-12" />
-        </Link>
+      <Link
+        id="logo"
+        href="/"
+        className={clsx(
+          "relative flex items-center text-4xl",
+          "transition-all duration-150",
+          {
+            ["text-background"]: scrollPosition <= 100,
+            ["text-primary"]: scrollPosition > 100,
+          },
+        )}
+      >
+        <Logo className="w-12" />
+        <span className="sr-only">{t("homepage")}</span>
+      </Link>
+      <nav role="navigation" className="flex w-full items-center justify-end">
         <ul className="hidden justify-end gap-4 transition-all duration-75 sm:flex">
           {menus?.menuLinks &&
             menus.menuLinks.map(

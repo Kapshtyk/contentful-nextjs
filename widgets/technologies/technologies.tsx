@@ -15,7 +15,7 @@ function useMenuAnimation() {
   const [scope, animate] = useAnimate();
 
   useEffect(() => {
-    inView("li", ({ target }) => {
+    inView(".tech", ({ target }) => {
       void animate(
         target,
         { x: [300, 0], opacity: [0, 1] },
@@ -44,8 +44,14 @@ export const Technologies = ({
         {title}
       </Heading>
       <div ref={scope} className="relative flex flex-col gap-12">
-        <Arrow className="absolute -top-6 right-0 hidden h-24 w-24 -rotate-90 text-white  sm:block" />
-        <Logo className="absolute bottom-0 left-0 hidden w-2/12 text-white md:block" />
+        <Arrow
+          aria-hidden="true"
+          className="absolute -top-6 right-0 hidden h-24 w-24 -rotate-90 text-white  sm:block"
+        />
+        <Logo
+          aria-hidden="true"
+          className="absolute bottom-0 left-0 hidden w-2/12 text-white md:block"
+        />
         {filteredTechnologies.length > 0 &&
           filteredTechnologies.map((technology) => {
             return (
@@ -82,7 +88,7 @@ export const Technologies = ({
                                 return (
                                   <li
                                     key={item}
-                                    className="relative inline-flex border-2 border-primary-foreground bg-white px-2 py-1 font-normal text-primary-foreground shadow-[-4px_4px_0px_0px] shadow-primary-foreground"
+                                    className="tech relative inline-flex border-2 border-primary-foreground bg-white px-2 py-1 font-normal text-primary-foreground shadow-[-4px_4px_0px_0px] shadow-primary-foreground"
                                   >
                                     {item}
                                   </li>

@@ -26,8 +26,14 @@ export function HeroBanner({ hero }: HeroBannerProps) {
         "min-h-screen to-70% px-4 pt-20 md:flex-row md:bg-gradient-to-r md:px-0 md:pt-20 lg:from-65% lg:to-65%",
       )}
     >
-      <Corner className="absolute hidden h-32 w-32 -rotate-90 text-primary md:bottom-8 md:right-4 md:block lg:right-8" />
-      <Arrow className="absolute hidden h-24 w-24 text-primary-foreground md:bottom-8 md:left-16 md:block lg:left-24" />
+      <Corner
+        aria-hidden="true"
+        className="absolute hidden h-32 w-32 -rotate-90 text-primary md:bottom-8 md:right-4 md:block lg:right-8"
+      />
+      <Arrow
+        aria-hidden="true"
+        className="absolute hidden h-24 w-24 text-primary-foreground md:bottom-8 md:left-16 md:block lg:left-24"
+      />
       <div className="relative md:w-[65%] md:pl-8 md:pr-[5%] lg:pr-[15%]">
         <div className="flex min-h-[350px] flex-col justify-evenly gap-4 md:min-h-[550px] md:pl-8 lg:pl-16">
           <Heading
@@ -54,6 +60,7 @@ export function HeroBanner({ hero }: HeroBannerProps) {
                 x: 0,
               }}
               transition={{ duration: 0.5, delay: 0.4 }}
+              className="text-4xl"
             >
               {hero.slogan}
             </motion.span>

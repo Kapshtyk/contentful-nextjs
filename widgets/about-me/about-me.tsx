@@ -32,7 +32,10 @@ export const AboutMe = (props: Frontpage["description"]) => {
             }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            <Corner className="absolute -right-8 -top-8 hidden h-32  w-32 rotate-180 text-primary-foreground md:block" />
+            <Corner
+              aria-hidden="true"
+              className="absolute -right-8 -top-8 hidden h-32  w-32 rotate-180 text-primary-foreground md:block"
+            />
 
             {img?.url && img.width && (
               <ContentfulImage

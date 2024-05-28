@@ -77,13 +77,21 @@ const config = {
           to: { height: "0" },
         },
         "menu-in": {
-          from: { transform: "translateX(110%)" },
-          to: { transform: "translateX(0)" },
+          from: { clipPath: "inset(10% 50% 90% 50%)" },
+          to: { clipPath: "inset(0% 0% 0% 0%)" },
         },
         "menu-out": {
           from: { transform: "translateX(0)" },
           to: { transform: "translateX(110%)" },
         },
+        // "menu-in": {
+        //   from: { transform: "translateX(110%)" },
+        //   to: { transform: "translateX(0)" },
+        // },
+        // "menu-out": {
+        //   from: { transform: "translateX(0)" },
+        //   to: { transform: "translateX(110%)" },
+        // },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",

@@ -6,8 +6,16 @@ import Link from "next/link";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
 import { unstable_setRequestLocale } from "next-intl/server";
+import {
+  dehydrate,
+  HydrationBoundary,
+  QueryClient,
+} from "@tanstack/react-query";
 
+import { getContacts } from "@/lib/api/contacts";
 import { getMenu } from "@/lib/api/menu";
+
+import Providers from "./providers";
 
 import { roboto } from "@/app/fonts";
 import { locales } from "@/i18n";
@@ -36,7 +44,18 @@ export default async function RootLayout({
   unstable_setRequestLocale(locale);
   const { isEnabled } = draftMode();
   const messages = await getMessages({ locale });
-  const menus = await getMenu();
+  const queryClient = new QueryClient();
+
+  await queryClient.prefetchQuery({
+    queryKey: ["menu"],
+    queryFn: getMenu,
+  });
+
+  await queryClient.prefetchQuery({
+    queryKey: ["contacts"],
+    queryFn: getContacts,
+  });
+
   return (
     <html lang={locale} className={roboto.className}>
       <NextIntlClientProvider messages={messages}>
@@ -49,17 +68,18 @@ export default async function RootLayout({
           <Link href="#main-content" className="sr-only">
             Skip to main content
           </Link>
-          <Header menus={menus} />
-          <div>
-            <main
-              id="main-content"
-              className="h-screen overflow-x-hidden overflow-y-scroll "
-            >
-              {children}
-            </main>
-          </div>
-          {/* <Footer /> */}
-          <div id="modal" />
+          <Providers>
+            <HydrationBoundary state={dehydrate(queryClient)}>
+              <Header />
+              <main
+                id="main-content"
+                className="h-screen overflow-x-hidden overflow-y-scroll "
+              >
+                {children}
+              </main>
+              {/* <Footer /> */}
+            </HydrationBoundary>
+          </Providers>
         </body>
       </NextIntlClientProvider>
     </html>

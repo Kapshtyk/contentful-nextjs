@@ -28,6 +28,7 @@ export const Blockquote = ({ children, inversed = false }: BlockquoteProps) => {
       transition={{ duration: 0.5, delay: 0.2 }}
     >
       <Quote
+        aria-hidden="true"
         className={clsx(
           "absolute -top-6 right-0 -z-10 h-16 w-16 text-primary ",
           {
