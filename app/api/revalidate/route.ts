@@ -9,7 +9,7 @@ export function POST(request: NextRequest) {
     return NextResponse.json({ message: "Invalid secret" }, { status: 401 });
   }
 
-  revalidatePath("/posts/[slug]", "page");
+  revalidatePath("/[locale]/[slug]", "page");
 
   return NextResponse.json({ revalidated: true, now: Date.now() });
 }

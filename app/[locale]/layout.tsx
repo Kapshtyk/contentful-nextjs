@@ -70,7 +70,7 @@ export default async function RootLayout({
       <NextIntlClientProvider messages={messages}>
         <body className="bg-background ">
           {isEnabled && (
-            <div className="bg-brand-dark w-full text-center text-background">
+            <div className="w-full bg-primary text-center text-white">
               Draft mode enabled
             </div>
           )}
