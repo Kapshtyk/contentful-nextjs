@@ -67,8 +67,6 @@
   strong {
     font-weight: theme(fontWeight.normal);
   }
-
- 
 }
 
 @layer components {
@@ -84,7 +82,7 @@
     z-index: -20;
     
     @screen lg {
-      padding-block: theme(spacing.20);
+      padding-block: theme(spacing.16);
     }
   }
 

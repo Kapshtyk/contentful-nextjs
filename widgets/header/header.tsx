@@ -89,8 +89,8 @@ export const Header = () => {
         {menus.menuLinks && (
           <MobileMenu
             className={clsx({
-              ["text-white"]: scrollPosition <= 100,
-              ["text-primary"]: scrollPosition > 100,
+              ["text-white"]: isHeaderTransparent,
+              ["text-primary"]: !isHeaderTransparent,
             })}
             menus={menus.menuLinks}
           />

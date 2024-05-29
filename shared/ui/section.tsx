@@ -20,7 +20,7 @@ export const Section = ({
         className,
       )}
     >
-      <div className="container">{children}</div>
+      <div className="container flex flex-col">{children}</div>
     </section>
   );
 };
