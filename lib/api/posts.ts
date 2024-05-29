@@ -2,6 +2,7 @@ import {
   GetPostQuery,
   GetPostQueryVariables,
   GetPostsQuery,
+  GetPostsQueryVariables,
   GetPostsSlugsQuery,
   Post,
 } from "@/lib/graphql/generate/graphql";
@@ -15,9 +16,12 @@ import {
 import { fetchGraphQL } from "./fetch-functions";
 
 export async function getAllPosts(locale: "en" | "ru" = "en"): Promise<Post[]> {
-  const entries = await fetchGraphQL<GetPostsQuery>(GET_POSTS, {
-    locale,
-  });
+  const entries = await fetchGraphQL<GetPostsQuery, GetPostsQueryVariables>(
+    GET_POSTS,
+    {
+      locale,
+    },
+  );
 
   return (
     entries.postCollection?.items.filter(
