@@ -164,6 +164,7 @@ export const FRAGMENT_ASSET = graphql(`
       id
     }
     url
+    title
     description
     width
     height

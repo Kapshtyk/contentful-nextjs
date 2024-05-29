@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import { OpenGraph } from "next/dist/lib/metadata/types/opengraph-types";
 import { draftMode } from "next/headers";
 import { unstable_setRequestLocale } from "next-intl/server";
 
@@ -11,7 +12,7 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({
-  params: { slug },
+  params: { slug, locale },
 }: {
   params: { slug: string; locale: "en" | "ru" };
 }): Promise<Metadata> {
@@ -23,11 +24,36 @@ export async function generateMetadata({
     };
   }
 
-  const post = await getPostBySlug(slug);
+  const post = await getPostBySlug(slug, locale);
   if (!post) {
     return {
       title: "Post not found",
     };
+  }
+
+  const openGraph: OpenGraph = {};
+
+  if (
+    post.coverImage &&
+    post.coverImage.url &&
+    post.coverImage.width &&
+    post.coverImage.height &&
+    post.coverImage.title
+  ) {
+    openGraph.images = [
+      {
+        url: post.coverImage.url,
+        width: post.coverImage.width,
+        height: post.coverImage.height,
+        alt: post.coverImage.title,
+      },
+    ];
+  }
+  if (post.title) {
+    openGraph.title = post.title;
+  }
+  if (post.excerpt) {
+    openGraph.description = post.excerpt;
   }
 
   return {
@@ -37,6 +63,7 @@ export async function generateMetadata({
       .filter((tag) => tag && tag.name)
       .map((tag) => tag?.name)
       .join(", "),
+    openGraph,
   };
 }
 
@@ -47,7 +74,7 @@ export default async function Page({
 }) {
   unstable_setRequestLocale(params.locale);
   const { isEnabled } = draftMode();
-  const post = await getPostBySlug(params.slug, isEnabled, params.locale);
+  const post = await getPostBySlug(params.slug, params.locale, isEnabled);
   if (!post) {
     return null;
   }

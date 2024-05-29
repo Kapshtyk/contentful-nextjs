@@ -1,6 +1,6 @@
 import "@/app/globals.css";
 
-import type { Viewport } from "next";
+import type { Metadata, Viewport } from "next";
 import { draftMode } from "next/headers";
 import Link from "next/link";
 import { NextIntlClientProvider } from "next-intl";
@@ -30,8 +30,11 @@ export const viewport: Viewport = {
   themeColor: "#6fc96e",
 };
 
-export const metadata = {
-  title: "Arseniiy Kapshtyk - Portfolio",
+export const metadata: Metadata = {
+  title: {
+    default: "Arseniiy Kapshtyk - Portfolio",
+    template: "%s | Arseniiy Kapshtyk - Portfolio",
+  },
   description:
     "This is a portfolio of Arseniiy Kapshtyk - a fullstack developer",
 };

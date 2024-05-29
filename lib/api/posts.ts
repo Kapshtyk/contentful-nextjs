@@ -32,8 +32,8 @@ export async function getAllPosts(locale: "en" | "ru" = "en"): Promise<Post[]> {
 
 export async function getPostBySlug(
   slug: string,
-  preview: boolean = false,
   locale: "en" | "ru" = "en",
+  preview: boolean = false,
 ): Promise<Post | null> {
   const entries = await fetchGraphQL<GetPostQuery, GetPostQueryVariables>(
     preview ? GET_POST_PREVIEW : GET_POST,

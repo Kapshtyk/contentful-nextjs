@@ -25,7 +25,7 @@ const documents = {
     "\n  fragment FragmentContacts on ContactDetails {\n    title\n    contactCollection {\n      items {\n        sys {\n          id\n        }\n        title\n        value\n        type\n      }\n    }\n  }\n": types.FragmentContactsFragmentDoc,
     "\n  fragment FragmentPost on Post {\n    slug\n    title\n    coverImage {\n      ...FragmentAsset\n    }\n    contentfulMetadata {\n      tags {\n        name\n      }\n    }\n    excerpt\n    content {\n      json\n    }\n    video {\n      ...FragmentAsset\n    }\n  }\n": types.FragmentPostFragmentDoc,
     "\n  fragment FragmentAuthor on Author {\n    name\n    picture {\n      url\n    }\n  }\n": types.FragmentAuthorFragmentDoc,
-    "\n  fragment FragmentAsset on Asset {\n    sys {\n      id\n    }\n    url\n    description\n    width\n    height\n  }\n": types.FragmentAssetFragmentDoc,
+    "\n  fragment FragmentAsset on Asset {\n    sys {\n      id\n    }\n    url\n    title\n    description\n    width\n    height\n  }\n": types.FragmentAssetFragmentDoc,
     "\n  fragment FragmentFrontpage on Frontpage {\n    title\n    hero {\n      ...FragmentHeroBanner\n    }\n    description {\n      json\n      links {\n        assets {\n          block {\n            ...FragmentAsset\n          }\n        \n        }\n      }\n    }\n    tech {\n      ...FragmentTech\n    }\n    highlightedPostsCollection {\n      items {\n        ...FragmentPost\n      }\n    }\n  }\n": types.FragmentFrontpageFragmentDoc,
     "\n  query GetContacts {\n    contactDetailsCollection(limit: 1) {\n      items {\n        ...FragmentContacts\n      }\n    }\n  }\n": types.GetContactsDocument,
     "\n  query GetPosts($locale: String!) {\n    postCollection(locale: $locale) {\n      items {\n        ...FragmentPost\n      }\n    }\n  }\n": types.GetPostsDocument,
@@ -101,7 +101,7 @@ export function graphql(source: "\n  fragment FragmentAuthor on Author {\n    na
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function graphql(source: "\n  fragment FragmentAsset on Asset {\n    sys {\n      id\n    }\n    url\n    description\n    width\n    height\n  }\n"): (typeof documents)["\n  fragment FragmentAsset on Asset {\n    sys {\n      id\n    }\n    url\n    description\n    width\n    height\n  }\n"];
+export function graphql(source: "\n  fragment FragmentAsset on Asset {\n    sys {\n      id\n    }\n    url\n    title\n    description\n    width\n    height\n  }\n"): (typeof documents)["\n  fragment FragmentAsset on Asset {\n    sys {\n      id\n    }\n    url\n    title\n    description\n    width\n    height\n  }\n"];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
