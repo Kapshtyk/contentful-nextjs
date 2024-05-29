@@ -12,9 +12,9 @@ const badgeVariants = cva(
         secondary: "border-transparent bg-secondary text-secondary-foreground ",
       },
       size: {
-        sm: "text-xxs px-2 py-0.5",
-        md: "text-sm px-3 py-1",
-        lg: "text-lg px-4 py-2",
+        sm: "px-2 py-0.5 text-xxs",
+        md: "px-3 py-1 text-sm",
+        lg: "px-4 py-2 text-lg",
       },
     },
     defaultVariants: {

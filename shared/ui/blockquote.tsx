@@ -14,7 +14,7 @@ export const Blockquote = ({ children, inversed = false }: BlockquoteProps) => {
   return (
     <motion.blockquote
       className={clsx(
-        "relative -order-2 mb-4 w-full border-l-[12px] border-primary  p-4 italic md:w-[60%] md:border-l-[24px] lg:order-none lg:w-full lg:max-w-lg",
+        "relative -order-2 mb-4 w-full border-l-[12px] border-primary  p-4 italic md:w-3/5 md:border-l-[24px] lg:order-none lg:w-full lg:max-w-lg",
         {
           ["border-white"]: inversed,
         },
@@ -29,12 +29,9 @@ export const Blockquote = ({ children, inversed = false }: BlockquoteProps) => {
     >
       <Quote
         aria-hidden="true"
-        className={clsx(
-          "absolute -top-6 right-0 -z-10 h-16 w-16 text-primary ",
-          {
-            ["text-white"]: inversed,
-          },
-        )}
+        className={clsx("absolute -top-6 right-0 -z-10 size-16 text-primary ", {
+          ["text-white"]: inversed,
+        })}
       />
       {children}
     </motion.blockquote>

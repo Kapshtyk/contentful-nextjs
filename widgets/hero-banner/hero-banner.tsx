@@ -28,11 +28,11 @@ export function HeroBanner({ hero }: HeroBannerProps) {
     >
       <Corner
         aria-hidden="true"
-        className="absolute hidden h-32 w-32 -rotate-90 text-primary md:bottom-8 md:right-4 md:block lg:right-8"
+        className="absolute hidden size-32 -rotate-90 text-primary md:bottom-8 md:right-4 md:block lg:right-8"
       />
       <Arrow
         aria-hidden="true"
-        className="absolute hidden h-24 w-24 text-primary-foreground md:bottom-8 md:left-16 md:block lg:left-24"
+        className="absolute hidden size-24 text-primary-foreground md:bottom-8 md:left-16 md:block lg:left-24"
       />
       <div className="relative md:w-[65%] md:pl-8 md:pr-[5%] lg:pr-[15%]">
         <div className="flex min-h-[350px] flex-col justify-evenly gap-4 md:min-h-[550px] md:pl-8 lg:pl-16">
@@ -71,9 +71,9 @@ export function HeroBanner({ hero }: HeroBannerProps) {
       <div
         className={clsx(
           "relative block h-[450px] w-full self-center before:absolute before:-right-4 before:-top-4 before:hidden before:h-full md:mr-4",
-          "before:w-full before:bg-primary after:absolute after:-bottom-4 after:left-[50%] after:h-full after:w-dvw after:-translate-x-1/2",
-          "after:bg-primary-foreground md:h-[400px] md:after:-left-4 md:after:translate-x-0",
-          "md:w-[325px] md:before:block md:after:-left-4 md:after:w-full lg:-ml-[120px] lg:h-[460px]  lg:w-[360px]",
+          "before:w-full before:bg-primary after:absolute after:-bottom-4 after:left-1/2 after:h-full after:w-dvw after:-translate-x-1/2",
+          "after:bg-primary-foreground md:h-[400px] md:after:translate-x-0",
+          "md:w-[325px] md:before:block md:after:-left-4 md:after:w-full lg:ml-[-120px] lg:h-[460px] lg:w-[360px]",
         )}
       >
         <ContentfulImage

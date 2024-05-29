@@ -118,7 +118,7 @@ export const MobileMenu = ({
                 <li key={menu}>
                   <Link
                     className={clsx(
-                      "relative block px-4 py-2 text-3xl font-normal text-white after:absolute after:-bottom-2 after:left-1/2 after:h-[8px] after:w-0 after:translate-x-[-50%] after:bg-primary after:transition-all after:duration-150 hover:after:w-full lg:text-2xl",
+                      "relative block px-4 py-2 text-3xl font-normal text-white after:absolute after:-bottom-2 after:left-1/2 after:h-[8px] after:w-0 after:-translate-x-1/2 after:bg-primary after:transition-all after:duration-150 hover:after:w-full lg:text-2xl",
                     )}
                     href={`/${menu === "/" ? "" : "#" + menu?.split(" ").join("-").toLowerCase()}`}
                     onClick={() => setIsOpen(false)}

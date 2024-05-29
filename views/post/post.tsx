@@ -35,7 +35,7 @@ export const Post = ({ post }: Post) => {
             {post?.content?.json && <Markdown document={post?.content.json} />}
           </div>
           {post.contentfulMetadata.tags.length > 0 && (
-            <div className="w-full">
+            <div className="w-full mb-4">
               <ul className="flex flex-wrap gap-4 lg:grid lg:grid-cols-1 lg:justify-items-start xl:grid-cols-2 xl:justify-items-stretch">
                 {post.contentfulMetadata.tags.map((item) => (
                   <li

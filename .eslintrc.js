@@ -14,7 +14,12 @@ module.exports = {
     },
   },
   plugins: ["prettier"],
-  extends: ["eslint:recommended", "next", "prettier"],
+  extends: [
+    "eslint:recommended",
+    "next",
+    "prettier",
+    "plugin:tailwindcss/recommended",
+  ],
   rules: {
     "prettier/prettier": "warn",
   },

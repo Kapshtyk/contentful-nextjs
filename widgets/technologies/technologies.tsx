@@ -46,7 +46,7 @@ export const Technologies = ({
       <div ref={scope} className="relative flex flex-col gap-12">
         <Arrow
           aria-hidden="true"
-          className="absolute -top-6 right-0 hidden h-24 w-24 -rotate-90 text-white  sm:block"
+          className="absolute -top-6 right-0 hidden size-24 -rotate-90 text-white sm:block"
         />
         <Logo
           aria-hidden="true"

@@ -40,7 +40,7 @@ export const Header = () => {
   return (
     <header
       className={clsx(
-        "group fixed left-0 right-0 z-50 flex h-16 items-center justify-between px-4 transition-all duration-150",
+        "group fixed inset-x-0 z-50 flex h-16 items-center justify-between px-4 transition-all duration-150",
         {
           ["bg-transparent"]: isHeaderTransparent,
           ["bg-white/80 shadow-[inset_0px_-1px_0px_0px] shadow-slate-200 backdrop-blur-md"]:
@@ -72,7 +72,7 @@ export const Header = () => {
                   <li key={menu}>
                     <Link
                       className={clsx(
-                        "relative block px-4 py-2 text-xl font-normal after:absolute after:-bottom-2 after:left-1/2 after:h-[8px] after:w-0 after:translate-x-[-50%] after:bg-primary after:transition-all after:duration-150 hover:after:w-full lg:text-2xl",
+                        "relative block px-4 py-2 text-xl font-normal after:absolute after:-bottom-2 after:left-1/2 after:h-[8px] after:w-0 after:-translate-x-1/2 after:bg-primary after:transition-all after:duration-150 hover:after:w-full lg:text-2xl",
                         {
                           ["text-white"]: isHeaderTransparent,
                           ["text-primary"]: !isHeaderTransparent,
