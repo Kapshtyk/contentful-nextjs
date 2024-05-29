@@ -19,7 +19,7 @@ export const CardsCarousel = ({ slides }: CardsCarouselProps) => {
       <CarouselContent>
         {slides.map((post, index) => (
           <CarouselItem key={index}>
-            <div className="p-1">
+            <div>
               <Card post={post} />
             </div>
           </CarouselItem>

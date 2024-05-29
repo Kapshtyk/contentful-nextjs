@@ -1,13 +1,9 @@
-import {
-  Frontpage as FrontpageType,
-  Post,
-} from "@/lib/graphql/generate/graphql";
+import { Frontpage as FrontpageType } from "@/lib/graphql/generate/graphql";
 
-import { CardsCarousel } from "@/entities/carousel/carousel";
 import { Section } from "@/shared/ui/section";
 import { AboutMe } from "@/widgets/about-me";
-import { Card } from "@/widgets/card";
 import { HeroBanner } from "@/widgets/hero-banner";
+import { Highlightedprojects } from "@/widgets/highlighted-projects";
 import { Technologies } from "@/widgets/technologies";
 
 interface FrontpageProps {
@@ -28,26 +24,9 @@ export function Frontpage({ frontpage }: FrontpageProps) {
           <Technologies {...frontpage.tech} />
         </Section>
       )}
-      {frontpage.highlightedPostsCollection && (
+      {frontpage.highlightedProjects && (
         <Section data-style="inversed" id="projects">
-          <div className="container p-8">
-            <div className="block p-6 sm:hidden">
-              <CardsCarousel
-                slides={frontpage.highlightedPostsCollection.items.filter(
-                  (item): item is Post => item !== null,
-                )}
-              />
-            </div>
-            <div className="hidden grid-cols-1 items-start gap-4 sm:grid lg:grid-cols-3">
-              {frontpage.highlightedPostsCollection.items.map((post) => {
-                if (!post) {
-                  return null;
-                } else {
-                  return <Card key={post.slug} post={post} />;
-                }
-              })}
-            </div>
-          </div>
+          <Highlightedprojects {...frontpage.highlightedProjects} />
         </Section>
       )}
     </>

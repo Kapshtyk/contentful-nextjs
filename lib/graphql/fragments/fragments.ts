@@ -191,9 +191,12 @@ export const FRAGMENT_FRONTPAGE = graphql(`
     tech {
       ...FragmentTech
     }
-    highlightedPostsCollection {
-      items {
-        ...FragmentPost
+    highlightedProjects {
+      title
+      projectsCollection {
+        items {
+          ...FragmentPost
+        }
       }
     }
   }

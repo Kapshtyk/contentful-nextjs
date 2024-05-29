@@ -6,6 +6,7 @@ import { Markdown } from "@/lib/markdown";
 
 import Logo from "@/shared/icons/logo.svg";
 import { Heading } from "@/shared/ui/heading";
+import { Paragraph } from "@/shared/ui/paragraph";
 import { Section } from "@/shared/ui/section";
 
 interface Post {
@@ -17,7 +18,7 @@ export const Post = ({ post }: Post) => {
     <>
       <Section>
         {post?.coverImage?.url && post.coverImage.width && (
-          <div className="w-screen self-center">
+          <div className="mb-4 w-screen self-center">
             <ContentfulImage
               src={post.coverImage.url}
               width={post.coverImage.width}
@@ -35,7 +36,7 @@ export const Post = ({ post }: Post) => {
             {post?.content?.json && <Markdown document={post?.content.json} />}
           </div>
           {post.contentfulMetadata.tags.length > 0 && (
-            <div className="w-full mb-4">
+            <div className="w-full">
               <ul className="flex flex-wrap gap-4 lg:grid lg:grid-cols-1 lg:justify-items-start xl:grid-cols-2 xl:justify-items-stretch">
                 {post.contentfulMetadata.tags.map((item) => (
                   <li
@@ -55,6 +56,7 @@ export const Post = ({ post }: Post) => {
         </div>
         {post?.video?.url && (
           <div className="max-w-3xl">
+            <Paragraph className="mt-4">{post.video.description}</Paragraph>
             <video title={post.video.title || undefined} controls>
               <source src={post.video.url} type="video/mp4" />
               Your browser does not support the video tag.

@@ -3,8 +3,6 @@ import Link from "next/link";
 import ContentfulImage from "@/lib/contentful-image";
 import { Post } from "@/lib/graphql/generate/graphql";
 
-import { Badge } from "@/shared/ui/badge";
-import { Heading } from "@/shared/ui/heading";
 import { Paragraph } from "@/shared/ui/paragraph";
 
 interface CardProps {
@@ -15,14 +13,14 @@ export const Card = ({ post }: CardProps) => {
   return (
     <Link
       href={`/${post.slug}`}
-      className="group relative mt-12 flex flex-col gap-4 rounded-lg bg-card p-4"
+      className="group relative mt-14 flex flex-col gap-4 bg-card p-4 shadow-[-6px_6px_0px_0px] shadow-primary-foreground"
     >
       {post?.coverImage?.url && post.coverImage?.width && (
         <div
           style={{
             aspectRatio: `${post.coverImage.width} / ${post.coverImage.height}`,
           }}
-          className="relative -mt-10 w-full overflow-hidden rounded-lg shadow-3xl"
+          className="relative -mt-12 w-full overflow-hidden shadow-[-4px_4px_0px_0px] shadow-primary-foreground"
         >
           <ContentfulImage
             src={post.coverImage.url}
@@ -32,24 +30,7 @@ export const Card = ({ post }: CardProps) => {
           />
         </div>
       )}
-      <Heading level={3} className="mb-0">
-        {post.title}
-      </Heading>
-      {post.contentfulMetadata.tags && (
-        <div className="flex gap-2">
-          {post.contentfulMetadata.tags.map((tag) => {
-            if (!tag) {
-              return null;
-            }
-            return (
-              <Badge key={tag.name} variant="secondary">
-                {tag.name}
-              </Badge>
-            );
-          })}
-        </div>
-      )}
-      <Paragraph>{post.excerpt}</Paragraph>
+      <Paragraph className="text-sm">{post.excerpt}</Paragraph>
     </Link>
   );
 };

@@ -5,6 +5,7 @@ import { useTranslations } from "next-intl";
 import Logo from "@/shared/icons/logo.svg";
 import { Heading } from "@/shared/ui/heading";
 import { Section } from "@/shared/ui/section";
+import { LocaleSwitcher } from "@/widgets/language-switcher";
 import { SocialLinks } from "@/widgets/social-links";
 
 export const Footer = () => {
@@ -25,6 +26,9 @@ export const Footer = () => {
       <p className="text-center font-thin">
         {t("footer-end", { year: new Date().getFullYear() })}
       </p>
+      <div className="self-end">
+        <LocaleSwitcher />
+      </div>
     </footer>
   );
 };
