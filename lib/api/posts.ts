@@ -14,8 +14,10 @@ import {
 
 import { fetchGraphQL } from "./fetch-functions";
 
-export async function getAllPosts(): Promise<Post[]> {
-  const entries = await fetchGraphQL<GetPostsQuery>(GET_POSTS);
+export async function getAllPosts(locale: "en" | "ru" = "en"): Promise<Post[]> {
+  const entries = await fetchGraphQL<GetPostsQuery>(GET_POSTS, {
+    locale,
+  });
 
   return (
     entries.postCollection?.items.filter(
@@ -27,11 +29,13 @@ export async function getAllPosts(): Promise<Post[]> {
 export async function getPostBySlug(
   slug: string,
   preview: boolean = false,
+  locale: "en" | "ru" = "en",
 ): Promise<Post | null> {
   const entries = await fetchGraphQL<GetPostQuery, GetPostQueryVariables>(
     preview ? GET_POST_PREVIEW : GET_POST,
     {
       slug,
+      locale,
     },
     preview,
   );

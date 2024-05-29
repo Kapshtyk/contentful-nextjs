@@ -31,8 +31,9 @@ export const viewport: Viewport = {
 };
 
 export const metadata = {
-  title: "Arseniiy Kapshtyk - Blog",
-  description: `This is a blog about web development, programming, and other related topics.`,
+  title: "Arseniiy Kapshtyk - Portfolio",
+  description:
+    "This is a portfolio of Arseniiy Kapshtyk - a fullstack developer",
 };
 
 export default async function RootLayout({

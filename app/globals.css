@@ -67,6 +67,8 @@
   strong {
     font-weight: theme(fontWeight.normal);
   }
+
+ 
 }
 
 @layer components {

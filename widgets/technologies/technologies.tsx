@@ -11,7 +11,7 @@ import Arrow from "@/shared/icons/arrow.svg";
 import Logo from "@/shared/icons/logo.svg";
 import { Heading } from "@/shared/ui/heading";
 
-function useMenuAnimation() {
+function useAnimation() {
   const [scope, animate] = useAnimate();
 
   useEffect(() => {
@@ -34,7 +34,7 @@ export const Technologies = ({
   title,
 }: NonNullable<TechnologiesType>) => {
   const t = useTranslations();
-  const scope = useMenuAnimation();
+  const scope = useAnimation();
 
   const filteredTechnologies = [frontend, backend, testing].filter(Boolean);
 

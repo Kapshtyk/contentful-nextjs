@@ -11,8 +11,8 @@ export const GET_CONTACTS = graphql(`
 `);
 
 export const GET_POSTS = graphql(`
-  query GetPosts {
-    postCollection {
+  query GetPosts($locale: String!) {
+    postCollection(locale: $locale) {
       items {
         ...FragmentPost
       }
@@ -21,8 +21,8 @@ export const GET_POSTS = graphql(`
 `);
 
 export const GET_POST = graphql(`
-  query GetPost($slug: String!) {
-    postCollection(where: { slug: $slug }, limit: 1) {
+  query GetPost($slug: String!, $locale: String!) {
+    postCollection(where: { slug: $slug }, limit: 1, locale: $locale) {
       items {
         ...FragmentPost
       }

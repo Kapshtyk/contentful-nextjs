@@ -143,6 +143,9 @@ export const FRAGMENT_POST = graphql(`
     content {
       json
     }
+    video {
+      ...FragmentAsset
+    }
   }
 `);
 
@@ -186,9 +189,6 @@ export const FRAGMENT_FRONTPAGE = graphql(`
     }
     tech {
       ...FragmentTech
-    }
-    featuredImage {
-      ...FragmentAsset
     }
     highlightedPostsCollection {
       items {

@@ -1,14 +1,43 @@
+import { Metadata } from "next";
 import { draftMode } from "next/headers";
 import { unstable_setRequestLocale } from "next-intl/server";
 
 import { getPostBySlug, getSlugs } from "@/lib/api/posts";
-import ContentfulImage from "@/lib/contentful-image";
 
-import { Heading } from "@/shared/ui/heading";
-import { Paragraph } from "@/shared/ui/paragraph";
+import { Post } from "@/views/post";
 
 export async function generateStaticParams() {
   return await getSlugs();
+}
+
+export async function generateMetadata({
+  params: { slug },
+}: {
+  params: { slug: string; locale: "en" | "ru" };
+}): Promise<Metadata> {
+  if (!slug) {
+    return {
+      title: "Arseniiy Kapshtyk - Portfolio",
+      description:
+        "This is a portfolio of Arseniiy Kapshtyk - a fullstack developer",
+    };
+  }
+
+  const post = await getPostBySlug(slug);
+  if (!post) {
+    return {
+      title: "Post not found",
+    };
+  }
+
+  return {
+    title: post.title,
+    description: post.excerpt,
+    keywords: post.contentfulMetadata.tags
+      .filter((tag) => tag && tag.name)
+      .map((tag) => tag?.name)
+      .join(", "),
+  };
 }
 
 export default async function Page({
@@ -18,27 +47,11 @@ export default async function Page({
 }) {
   unstable_setRequestLocale(params.locale);
   const { isEnabled } = draftMode();
-  const post = await getPostBySlug(params.slug, isEnabled);
-  return (
-    <section className="flex flex-col items-center">
-      <div className="min-h-[100vh] w-[100vw] bg-foreground pt-20">
-        <div className="container pb-20">
-          <Heading level={1} className="text-background">
-            {post?.title}
-          </Heading>
-          <Paragraph className="text-background">{post?.excerpt}</Paragraph>
-          {post?.coverImage?.url && (
-            <div className="relative h-56 w-96">
-              <ContentfulImage
-                src={post.coverImage.url}
-                fill={true}
-                className="object-cover"
-                alt={post.title}
-              />
-            </div>
-          )}
-        </div>
-      </div>
-    </section>
-  );
+  const post = await getPostBySlug(params.slug, isEnabled, params.locale);
+  if (!post) {
+    return null;
+  }
+  return <Post post={post} />;
 }
+
+export const revalidate = 7200;

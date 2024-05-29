@@ -84,6 +84,16 @@ export function Markdown({
         <Blockquote inversed={inversed}>{children}</Blockquote>
       ),
       [BLOCKS.LIST_ITEM]: (_node, children) => <ListItem>{children}</ListItem>,
+      [INLINES.HYPERLINK]: (node, children) => (
+        <Link
+          className="font-normal text-primary transition-all duration-75"
+          target="_blank"
+          rel="noopener noreferrer"
+          href={node.data.uri}
+        >
+          {children}
+        </Link>
+      ),
       [INLINES.ENTRY_HYPERLINK]: (node, children) => {
         const asset = entryMap.get(node.data.target.sys.id);
         if (!asset) {

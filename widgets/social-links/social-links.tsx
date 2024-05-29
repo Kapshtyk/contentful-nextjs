@@ -31,7 +31,12 @@ export const SocialLinks = ({
     switch (contact.type) {
       case "email":
         return (
-          <Link key={contact.title} href={`mailto:${contact.value}`}>
+          <Link
+            key={contact.title}
+            href={`mailto:${contact.value}`}
+            target="_blank"
+            rel="noreferrer noopener"
+          >
             <MailIcon aria-hidden />
             <span>{t(contact.title as keyof IntlMessages)}</span>
           </Link>
@@ -41,6 +46,8 @@ export const SocialLinks = ({
           <Link
             key={contact.title}
             href={`tel:${contact.value.split(" ").join("")}`}
+            target="_blank"
+            rel="noreferrer noopener"
           >
             <PhoneIcon aria-hidden />
             <span>{t(contact.title as keyof IntlMessages)}</span>
@@ -48,21 +55,36 @@ export const SocialLinks = ({
         );
       case "linkedin":
         return (
-          <Link key={contact.title} href={contact.value}>
+          <Link
+            key={contact.title}
+            href={contact.value}
+            target="_blank"
+            rel="noreferrer noopener"
+          >
             <LinkedinIcon aria-hidden />
             <span>{t(contact.title as keyof IntlMessages)}</span>
           </Link>
         );
       case "github":
         return (
-          <Link key={contact.title} href={contact.value}>
+          <Link
+            key={contact.title}
+            href={contact.value}
+            target="_blank"
+            rel="noreferrer noopener"
+          >
             <GithubIcon aria-hidden />
             <span>{t(contact.title as keyof IntlMessages)}</span>
           </Link>
         );
       case "telegram":
         return (
-          <Link key={contact.title} href={contact.value}>
+          <Link
+            key={contact.title}
+            href={contact.value}
+            target="_blank"
+            rel="noreferrer noopener"
+          >
             <TelegramIcon aria-hidden />
             <span>{t(contact.title as keyof IntlMessages)}</span>
           </Link>
