@@ -10,6 +10,7 @@ export function POST(request: NextRequest) {
   }
 
   revalidatePath("/[locale]/[slug]", "page");
+  revalidatePath("/[locale]", "page");
 
   return NextResponse.json({ revalidated: true, now: Date.now() });
 }
