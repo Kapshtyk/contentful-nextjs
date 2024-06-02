@@ -7,9 +7,7 @@ import { FrontpageDescriptionLinks } from "./graphql/generate/graphql";
 
 import { Blockquote } from "@/shared/ui/blockquote";
 import { Heading } from "@/shared/ui/heading";
-import { ListItem } from "@/shared/ui/list-item";
 import { Paragraph } from "@/shared/ui/paragraph";
-import { UnorderedList } from "@/shared/ui/unordered-list";
 
 type RichTextProps = {
   document: Document;
@@ -77,13 +75,9 @@ export function Markdown({
       [BLOCKS.PARAGRAPH]: (_node, children) => (
         <Paragraph className={className}>{children}</Paragraph>
       ),
-      [BLOCKS.UL_LIST]: (_node, children) => (
-        <UnorderedList>{children}</UnorderedList>
-      ),
       [BLOCKS.QUOTE]: (_node, children) => (
         <Blockquote inversed={inversed}>{children}</Blockquote>
       ),
-      [BLOCKS.LIST_ITEM]: (_node, children) => <ListItem>{children}</ListItem>,
       [INLINES.HYPERLINK]: (node, children) => (
         <Link
           className="font-normal text-primary transition-all duration-75"
