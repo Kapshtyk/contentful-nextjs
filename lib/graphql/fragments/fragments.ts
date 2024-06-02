@@ -146,6 +146,9 @@ export const FRAGMENT_POST = graphql(`
     video {
       ...FragmentAsset
     }
+    previewImage {
+      ...FragmentAsset
+    }
   }
 `);
 

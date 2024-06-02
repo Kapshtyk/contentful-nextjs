@@ -24,7 +24,7 @@ export const Highlightedprojects = (
               )}
             />
           </div>
-          <div className="hidden grid-cols-1 items-start sm:grid md:grid-cols-2 lg:grid-cols-3">
+          <div className="hidden grid-cols-1 gap-8 items-start sm:grid md:grid-cols-2 lg:grid-cols-3">
             {projects.projectsCollection.items.map((post) => {
               if (!post) {
                 return null;

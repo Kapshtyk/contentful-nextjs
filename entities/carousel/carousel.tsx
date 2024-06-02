@@ -19,9 +19,7 @@ export const CardsCarousel = ({ slides }: CardsCarouselProps) => {
       <CarouselContent>
         {slides.map((post, index) => (
           <CarouselItem key={index}>
-            <div>
-              <Card post={post} />
-            </div>
+            <Card post={post} />
           </CarouselItem>
         ))}
       </CarouselContent>

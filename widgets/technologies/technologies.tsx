@@ -88,6 +88,7 @@ export const Technologies = ({
                                 return (
                                   <li
                                     key={item}
+                                    // eslint-disable-next-line tailwindcss/no-custom-classname
                                     className="tech relative inline-flex border-2 border-primary-foreground bg-white px-2 py-1 font-normal text-primary-foreground shadow-[-4px_4px_0px_0px] shadow-primary-foreground"
                                   >
                                     {item}
