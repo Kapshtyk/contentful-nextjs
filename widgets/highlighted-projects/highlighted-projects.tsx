@@ -1,4 +1,5 @@
 import { Frontpage, Post } from "@/lib/graphql/generate/graphql";
+import { Markdown } from "@/lib/markdown";
 
 import { CardsCarousel } from "@/entities/carousel/carousel";
 import { Heading } from "@/shared/ui/heading";
@@ -24,7 +25,7 @@ export const Highlightedprojects = (
               )}
             />
           </div>
-          <div className="hidden grid-cols-1 gap-8 items-start sm:grid md:grid-cols-2 lg:grid-cols-3">
+          <div className="mb-8 hidden grid-cols-1 items-stretch gap-8 sm:grid md:grid-cols-2 lg:grid-cols-3">
             {projects.projectsCollection.items.map((post) => {
               if (!post) {
                 return null;
@@ -33,6 +34,12 @@ export const Highlightedprojects = (
               }
             })}
           </div>
+          {projects.description?.json && (
+            <Markdown
+              document={projects.description.json}
+              className="text-xl text-white"
+            />
+          )}
         </>
       )}
     </>

@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ReactNode } from "react";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import { BLOCKS, Document, INLINES } from "@contentful/rich-text-types";
+import clsx from "clsx";
 
 import { FrontpageDescriptionLinks } from "./graphql/generate/graphql";
 
@@ -80,7 +81,10 @@ export function Markdown({
       ),
       [INLINES.HYPERLINK]: (node, children) => (
         <Link
-          className="font-normal text-primary transition-all duration-75"
+          className={clsx(
+            "font-normal text-primary transition-all duration-75",
+            className,
+          )}
           target="_blank"
           rel="noopener noreferrer"
           href={node.data.uri}

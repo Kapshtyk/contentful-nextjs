@@ -34,18 +34,18 @@ export async function generateMetadata({
   const openGraph: OpenGraph = {};
 
   if (
-    post.coverImage &&
-    post.coverImage.url &&
-    post.coverImage.width &&
-    post.coverImage.height &&
-    post.coverImage.title
+    post.previewImage &&
+    post.previewImage.url &&
+    post.previewImage.width &&
+    post.previewImage.height &&
+    post.previewImage.title
   ) {
     openGraph.images = [
       {
-        url: post.coverImage.url,
-        width: post.coverImage.width,
-        height: post.coverImage.height,
-        alt: post.coverImage.title,
+        url: post.previewImage.url,
+        width: post.previewImage.width,
+        height: post.previewImage.height,
+        alt: post.previewImage.title,
       },
     ];
   }

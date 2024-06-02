@@ -41,8 +41,11 @@ export const AboutMe = (props: Frontpage["description"]) => {
               <ContentfulImage
                 className="z-40 object-contain"
                 src={img.url}
+                sizes="(min-width: 768) 33vw, 50vw"
                 width={img.width}
                 height={img.height}
+                alt={img.title}
+                priority={true}
               />
             )}
           </motion.div>

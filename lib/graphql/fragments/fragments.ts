@@ -201,6 +201,9 @@ export const FRAGMENT_FRONTPAGE = graphql(`
           ...FragmentPost
         }
       }
+      description {
+        json
+      }
     }
   }
 `);
