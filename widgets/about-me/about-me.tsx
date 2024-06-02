@@ -1,25 +1,68 @@
 "use client";
+import { useLocale } from "next-intl";
 import clsx from "clsx";
 import { motion } from "framer-motion";
 
 import ContentfulImage from "@/lib/contentful-image";
-import { Frontpage } from "@/lib/graphql/generate/graphql";
+import { Education, Frontpage } from "@/lib/graphql/generate/graphql";
 import { Markdown } from "@/lib/markdown";
 
 import Corner from "@/shared/icons/corner.svg";
+import { Heading } from "@/shared/ui/heading";
+import { Paragraph } from "@/shared/ui/paragraph";
 
-export const AboutMe = (props: Frontpage["description"]) => {
-  if (!props) {
+export const AboutMe = ({
+  description,
+  education,
+}: {
+  description: Frontpage["description"];
+  education: Education;
+}) => {
+  const locale = useLocale();
+  if (!description || !education) {
     return null;
   }
-  const img = props.links.assets.block[0];
+
+  const img = description.links.assets.block[0];
   return (
     <>
       <div className="flex flex-wrap items-center justify-between gap-2 overflow-visible pr-0 md:pr-8 lg:flex-nowrap lg:gap-8">
         <div className="contents lg:block">
-          <Markdown className="w-full" document={props.json} />
+          <Markdown className="w-full" document={description.json} />
+          {education && education?.educationCollection?.items && (
+            <>
+              <Heading level={3}>{education.title}</Heading>
+              <ul className="flex flex-col gap-4">
+                {education.educationCollection.items.map((ed) => (
+                  <li key={ed?.title}>
+                    <Paragraph>
+                      <strong>
+                        {ed?.title}
+                        {": "}
+                      </strong>
+                    </Paragraph>
+                    <p>
+                      {ed?.institutionoremployer}
+                      {", "}
+                      {new Date(ed?.startDate).toLocaleDateString(locale, {
+                        month: "long",
+                        year: "numeric",
+                      })}{" "}
+                      -{" "}
+                      {ed?.endDate
+                        ? new Date(ed?.endDate).toLocaleDateString(locale, {
+                            month: "long",
+                            year: "numeric",
+                          })
+                        : "Present"}
+                    </p>
+                  </li>
+                ))}
+              </ul>
+            </>
+          )}
         </div>
-        <div className="d:shadow-none -ml-4 mt-6 flex w-dvw shrink-0 justify-center bg-primary shadow-[0px_65px_0px_0px] shadow-primary md:-order-1 md:m-0 md:w-2/6 md:bg-transparent md:shadow-none lg:order-none lg:mb-0">
+        <div className="-ml-4 mt-6 flex w-dvw shrink-0 justify-center bg-primary shadow-[0px_65px_0px_0px] shadow-primary md:-order-1 md:m-0 md:w-2/6 md:bg-transparent md:shadow-none lg:order-none lg:mb-0">
           <motion.div
             className={clsx(
               "relative -mt-4 w-1/2 before:absolute before:-z-10 before:size-full before:bg-primary md:mt-0 md:h-fit md:w-full md:before:-bottom-4 md:before:-left-4",

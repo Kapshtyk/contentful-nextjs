@@ -35,10 +35,10 @@ export function HeroBanner({ hero }: HeroBannerProps) {
         className="absolute hidden size-24 text-primary-foreground md:bottom-8 md:left-16 md:block lg:left-24"
       />
       <div className="relative md:w-[65%] md:pl-8 md:pr-[5%] lg:pr-[15%]">
-        <div className="flex min-h-[350px] flex-col justify-evenly gap-4 md:min-h-[550px] md:pl-8 lg:pl-16">
+        <div className="flex min-h-[350px] flex-col justify-center gap-8 md:min-h-[550px] md:pl-8 lg:pl-16">
           <Heading
             level={1}
-            className="contents text-5xl font-bold leading-none text-primary-foreground"
+            className="contents text-6xl font-bold leading-none text-primary-foreground"
           >
             <motion.span
               initial={{ opacity: 0, x: -10 }}
@@ -60,12 +60,11 @@ export function HeroBanner({ hero }: HeroBannerProps) {
                 x: 0,
               }}
               transition={{ duration: 0.5, delay: 0.4 }}
-              className="text-4xl"
+              className="text-5xl"
             >
               {hero.slogan}
             </motion.span>
           </Heading>
-          <Paragraph className="text-background">{hero.description}</Paragraph>
         </div>
       </div>
       <div

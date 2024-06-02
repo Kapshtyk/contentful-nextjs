@@ -1,13 +1,19 @@
-import { Frontpage, Post } from "@/lib/graphql/generate/graphql";
+import {
+  Frontpage,
+  Post,
+  SelectedProjects,
+} from "@/lib/graphql/generate/graphql";
 import { Markdown } from "@/lib/markdown";
 
 import { CardsCarousel } from "@/entities/carousel/carousel";
 import { Heading } from "@/shared/ui/heading";
 import { Card } from "@/widgets/card";
 
-export const Highlightedprojects = (
-  projects: Frontpage["highlightedProjects"],
-) => {
+export const Highlightedprojects = ({
+  projects,
+}: {
+  projects: SelectedProjects | null;
+}) => {
   if (!projects) {
     return null;
   }

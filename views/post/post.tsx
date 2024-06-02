@@ -1,4 +1,8 @@
+/* eslint-disable tailwindcss/no-custom-classname */
 "use client";
+
+import { useEffect } from "react";
+import { inView, motion, useAnimate } from "framer-motion";
 
 import ContentfulImage from "@/lib/contentful-image";
 import { Post as PostType } from "@/lib/graphql/generate/graphql";
@@ -9,9 +13,6 @@ import { Heading } from "@/shared/ui/heading";
 import { Paragraph } from "@/shared/ui/paragraph";
 import { Section } from "@/shared/ui/section";
 
-import {inView, motion, useAnimate } from "framer-motion";
-import { useEffect } from "react";
-
 interface Post {
   post: PostType;
 }
@@ -21,6 +22,13 @@ function useAnimation() {
 
   useEffect(() => {
     inView(".tags", ({ target }) => {
+      void animate(
+        target,
+        { x: [300, 0], opacity: [0, 1] },
+        { type: "tween", duration: 0.3 },
+      );
+    });
+    inView("video", ({ target }) => {
       void animate(
         target,
         { x: [300, 0], opacity: [0, 1] },
@@ -39,14 +47,15 @@ export const Post = ({ post }: Post) => {
     <>
       <Section>
         {post?.coverImage?.url && post.coverImage.width && (
-          <motion.div className="mb-4 w-screen self-center"
-          initial={{ opacity: 0, x: -10 }}
-          viewport={{ once: true }}
-          whileInView={{
-            opacity: 1,
-            x: 0,
-          }}
-          transition={{ duration: 0.5, delay: 0.6 }}
+          <motion.div
+            className="mb-4 w-screen self-center"
+            initial={{ opacity: 0, x: -10 }}
+            viewport={{ once: true }}
+            whileInView={{
+              opacity: 1,
+              x: 0,
+            }}
+            transition={{ duration: 0.5, delay: 0.6 }}
           >
             <ContentfulImage
               src={post.coverImage.url}
@@ -61,12 +70,12 @@ export const Post = ({ post }: Post) => {
           {post.title}
         </Heading>
         <div className="relative mb-4 flex flex-col items-start gap-6 lg:flex-row">
-          <div className="max-w-3xl w-full">
+          <div className="w-full max-w-3xl">
             {post?.content?.json && <Markdown document={post?.content.json} />}
           </div>
           {post.contentfulMetadata.tags.length > 0 && (
             <div ref={scope} className="w-full">
-              <ul className="tags flex flex-wrap gap-4 lg:grid lg:grid-cols-1 lg:justify-items-start xl:grid-cols-2 2xl:grid-cols-3 xl:justify-items-stretch">
+              <ul className="tags flex flex-wrap gap-4 lg:grid lg:grid-cols-1 lg:justify-items-start xl:grid-cols-2 xl:justify-items-stretch 2xl:grid-cols-3">
                 {post.contentfulMetadata.tags.map((item) => (
                   <li
                     key={item?.name}

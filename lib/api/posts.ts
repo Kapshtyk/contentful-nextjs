@@ -1,12 +1,16 @@
 import {
+  GetHighlightedPostsByIdQuery,
+  GetHighlightedPostsByIdQueryVariables,
   GetPostQuery,
   GetPostQueryVariables,
   GetPostsQuery,
   GetPostsQueryVariables,
   GetPostsSlugsQuery,
   Post,
+  SelectedProjects,
 } from "@/lib/graphql/generate/graphql";
 import {
+  GET_HIGHLIGHTED_POSTS_BY_ID,
   GET_POST,
   GET_POST_PREVIEW,
   GET_POSTS,
@@ -58,4 +62,21 @@ export async function getSlugs(): Promise<{ slug: string }[]> {
     }) as { slug: string }[];
 
   return slugs;
+}
+
+export async function getHighlightedPosts(
+  id: string,
+  locale: "en" | "ru" = "en",
+): Promise<SelectedProjects | null> {
+  const entries = await fetchGraphQL<
+    GetHighlightedPostsByIdQuery,
+    GetHighlightedPostsByIdQueryVariables
+  >(GET_HIGHLIGHTED_POSTS_BY_ID, {
+    id,
+    locale,
+  });
+
+  return entries.selectedProjectsCollection?.items[0]
+    ? (entries.selectedProjectsCollection.items[0] as SelectedProjects)
+    : null;
 }

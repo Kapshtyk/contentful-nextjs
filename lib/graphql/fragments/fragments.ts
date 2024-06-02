@@ -18,7 +18,6 @@ export const FRAGMENT_TECH = graphql(`
 export const FRAGMENT_HERO = graphql(`
   fragment FragmentHeroBanner on HeroBanner {
     title
-    description
     slogan
     heroImage {
       ...FragmentAsset
@@ -59,9 +58,6 @@ export const FRAGMENT_TESTING = graphql(`
 
 export const FRAGMENT_EXPERIENCE = graphql(`
   fragment FragmentExperience on Experience {
-    sys {
-      id
-    }
     title
     description
     contentfulMetadata {
@@ -74,12 +70,8 @@ export const FRAGMENT_EXPERIENCE = graphql(`
 
 export const FRAGMENT_EDUCATION_OR_NON_RELEVANT_EXPERIENCE = graphql(`
   fragment FragmentEd on EducationOrNonRelevantExperience {
-    sys {
-      id
-    }
     title
     institutionoremployer
-    description
     startDate
     endDate
     isRelevant
@@ -88,9 +80,6 @@ export const FRAGMENT_EDUCATION_OR_NON_RELEVANT_EXPERIENCE = graphql(`
 
 export const FRAGMENT_SOFT_SKILLS = graphql(`
   fragment FragmentSoftSkills on SoftSkills {
-    sys {
-      id
-    }
     title
     softSkills
   }
@@ -116,9 +105,6 @@ export const FRAGMENT_CONTACTS = graphql(`
     title
     contactCollection {
       items {
-        sys {
-          id
-        }
         title
         value
         type
@@ -163,9 +149,6 @@ export const FRAGMENT_AUTHOR = graphql(`
 
 export const FRAGMENT_ASSET = graphql(`
   fragment FragmentAsset on Asset {
-    sys {
-      id
-    }
     url
     title
     description
@@ -187,7 +170,6 @@ export const FRAGMENT_FRONTPAGE = graphql(`
           block {
             ...FragmentAsset
           }
-        
         }
       }
     }
@@ -195,14 +177,13 @@ export const FRAGMENT_FRONTPAGE = graphql(`
       ...FragmentTech
     }
     highlightedProjects {
-      title
-      projectsCollection {
-        items {
-          ...FragmentPost
-        }
+      sys {
+        id
       }
-      description {
-        json
+    }
+    education {
+      sys {
+        id
       }
     }
   }
