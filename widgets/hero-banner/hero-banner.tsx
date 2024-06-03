@@ -81,7 +81,6 @@ export function HeroBanner({ hero }: HeroBannerProps) {
           fill={true}
           sizes="(min-width: 768) 33vw, 50vw"
           alt={hero.heroImage?.title || ""}
-          aria-hidden
         />
       </div>
     </section>
