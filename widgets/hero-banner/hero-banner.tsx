@@ -80,7 +80,7 @@ export function HeroBanner({ hero }: HeroBannerProps) {
           className="z-50 object-contain md:object-cover"
           fill={true}
           sizes="(min-width: 768) 33vw, 50vw"
-          alt=""
+          alt={hero.heroImage?.title || ""}
           aria-hidden
         />
       </div>

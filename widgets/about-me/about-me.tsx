@@ -23,11 +23,10 @@ export const AboutMe = ({
     return null;
   }
 
-  const img = description.links.assets.block[0];
   return (
     <>
-      <div className="flex flex-wrap items-center justify-between gap-2 overflow-visible pr-0 md:pr-8 lg:flex-nowrap lg:gap-8">
-        <div className="contents lg:block">
+      <div className="flex flex-wrap items-stretch justify-between gap-2 overflow-visible pr-0 md:pr-8 lg:flex-nowrap lg:gap-8">
+        <div className="columns-1 md:columns-2 lg:block">
           <Markdown className="w-full" document={description.json} />
           {education && education?.educationCollection?.items && (
             <>
@@ -41,7 +40,7 @@ export const AboutMe = ({
                         {": "}
                       </strong>
                     </Paragraph>
-                    <p>
+                    <Paragraph>
                       {ed?.institutionoremployer}
                       {", "}
                       {new Date(ed?.startDate).toLocaleDateString(locale, {
@@ -55,14 +54,14 @@ export const AboutMe = ({
                             year: "numeric",
                           })
                         : "Present"}
-                    </p>
+                    </Paragraph>
                   </li>
                 ))}
               </ul>
             </>
           )}
         </div>
-        <div className="-ml-4 mt-6 flex w-dvw shrink-0 justify-center bg-primary shadow-[0px_65px_0px_0px] shadow-primary md:-order-1 md:m-0 md:w-2/6 md:bg-transparent md:shadow-none lg:order-none lg:mb-0">
+        {/* <div className="-ml-4 mt-6 flex w-dvw shrink-0 justify-center bg-primary shadow-[0px_65px_0px_0px] shadow-primary md:-order-1 md:m-0 md:w-2/6 md:bg-transparent md:shadow-none lg:order-none lg:mb-0">
           <motion.div
             className={clsx(
               "relative -mt-4 w-1/2 before:absolute before:-z-10 before:size-full before:bg-primary md:mt-0 md:h-fit md:w-full md:before:-bottom-4 md:before:-left-4",
@@ -92,7 +91,7 @@ export const AboutMe = ({
               />
             )}
           </motion.div>
-        </div>
+        </div> */}
       </div>
     </>
   );

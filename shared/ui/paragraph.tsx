@@ -24,7 +24,7 @@ export const Paragraph = ({
       }}
       transition={{ duration: 0.5, delay: 0.6 }}
       className={clsx(
-        "group:inline mb-2 group-[.list-inside]:inline",
+        "group:inline mb-2 break-inside-avoid-column group-[.list-inside]:inline",
         className,
       )}
       {...props}

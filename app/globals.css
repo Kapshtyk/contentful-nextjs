@@ -92,7 +92,7 @@
   
   .heading-1 {
     font-size: theme(fontSize.5xl);
-    margin-bottom: 0.5em;
+    margin-bottom: 0.2em;
     font-weight: theme(fontWeight.black);
 
     @screen lg {
@@ -104,7 +104,7 @@
   }
   .heading-2 {
     font-size: theme(fontSize.4xl);
-    margin-bottom: 0.5em;
+    margin-bottom: 0.2em;
     font-weight: theme(fontWeight.extrabold);
     order: -3;
 
@@ -117,7 +117,7 @@
   }
   .heading-3 {
     font-size: theme(fontSize.3xl);
-    margin-bottom: 0.5em;
+    margin-bottom: 0.2em;
     font-weight: theme(fontWeight.bold);
 
     @screen lg {
@@ -129,7 +129,7 @@
   }
   .heading-4 {
     font-size: theme(fontSize.2xl);
-    margin-bottom: 0.5em;
+    margin-bottom: 0.2em;
     font-weight: theme(fontWeight.bold);
 
     @screen lg {
@@ -141,7 +141,7 @@
   }
   .heading-5 {
     font-size: theme(fontSize.xl);
-    margin-bottom: 0.5em;
+    margin-bottom: 0.2em;
     font-weight: theme(fontWeight.semibold);
 
     @screen lg {
