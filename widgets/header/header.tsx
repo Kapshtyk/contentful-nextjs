@@ -51,7 +51,7 @@ export const Header = () => {
     >
       <Link
         id="logo"
-        href="/"
+        href={`/${locale}`}
         className={clsx(
           "relative flex items-center text-4xl",
           "transition-all duration-150",
