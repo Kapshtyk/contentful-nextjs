@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import clsx from "clsx";
@@ -17,6 +17,7 @@ export const Header = () => {
   const { data: menus } = useQuery<Menu>({ queryKey: ["menu"] });
   const pathname = usePathname();
   const t = useTranslations();
+  const locale = useLocale();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -78,7 +79,7 @@ export const Header = () => {
                           ["text-primary"]: !isHeaderTransparent,
                         },
                       )}
-                      href={`/#${menu?.split(" ").join("-").toLowerCase()}`}
+                      href={`/${locale}/#${menu?.split(" ").join("-").toLowerCase()}`}
                     >
                       {t(menu as keyof IntlMessages)}
                     </Link>
