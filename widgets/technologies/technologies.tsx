@@ -11,22 +11,6 @@ import Arrow from "@/shared/icons/arrow.svg";
 import Logo from "@/shared/icons/logo.svg";
 import { Heading } from "@/shared/ui/heading";
 
-function useAnimation() {
-  const [scope, animate] = useAnimate();
-
-  useEffect(() => {
-    inView(".tech", ({ target }) => {
-      void animate(
-        target,
-        { x: [300, 0], opacity: [0, 1] },
-        { type: "tween", duration: 0.3 },
-      );
-    });
-  }, [animate]);
-
-  return scope;
-}
-
 export const Technologies = ({
   frontend,
   backend,
@@ -34,7 +18,6 @@ export const Technologies = ({
   title,
 }: NonNullable<TechnologiesType>) => {
   const t = useTranslations();
-  const scope = useAnimation();
 
   const filteredTechnologies = [frontend, backend, testing].filter(Boolean);
 
@@ -43,7 +26,7 @@ export const Technologies = ({
       <Heading inversed level={2}>
         {title}
       </Heading>
-      <div ref={scope} className="relative flex flex-col gap-12">
+      <div className="relative flex flex-col gap-12">
         <Arrow
           aria-hidden="true"
           className="absolute -top-6 right-0 hidden size-24 -rotate-90 text-white sm:block"
@@ -88,8 +71,7 @@ export const Technologies = ({
                                 return (
                                   <li
                                     key={item}
-                                    // eslint-disable-next-line tailwindcss/no-custom-classname
-                                    className="tech relative inline-flex border-2 border-primary-foreground bg-white px-2 py-1 font-normal text-primary-foreground shadow-[-4px_4px_0px_0px] shadow-primary-foreground"
+                                    className="relative inline-flex border-2 border-primary-foreground bg-white px-2 py-1 font-normal text-primary-foreground shadow-[-4px_4px_0px_0px] shadow-primary-foreground"
                                   >
                                     {item}
                                   </li>

@@ -1,3 +1,4 @@
+/* eslint-disable tailwindcss/no-custom-classname */
 "use client";
 
 import Link from "next/link";
@@ -30,7 +31,7 @@ function useMenuAnimation(isOpen: boolean) {
       },
     );
     void animate(
-      "ul",
+      ".menu-list",
       {
         clipPath: isOpen ? "inset(0% 0% 0% 0%)" : "inset(10% 50% 90% 50%)",
       },
@@ -42,7 +43,7 @@ function useMenuAnimation(isOpen: boolean) {
     );
 
     void animate(
-      "li",
+      ".menu-item",
       isOpen
         ? { opacity: 1, scale: 1, filter: "blur(0px)" }
         : { opacity: 0, scale: 0.3, filter: "blur(20px)" },
@@ -113,10 +114,10 @@ export const MobileMenu = ({
             />
             <span className="sr-only">Close navigation menu</span>
           </button>
-          <ul className="flex flex-col items-center justify-center gap-12">
+          <ul className="menu-list flex flex-col items-center justify-center gap-12">
             {menus &&
               menus.map((menu) => (
-                <li key={menu}>
+                <li className="menu-item" key={menu}>
                   <Link
                     className={clsx(
                       "relative block px-4 py-2 text-3xl font-normal text-white after:absolute after:-bottom-2 after:left-1/2 after:h-[8px] after:w-0 after:-translate-x-1/2 after:bg-primary after:transition-all after:duration-150 hover:after:w-full lg:text-2xl",
